@@ -25,9 +25,15 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 // plugin folder url
-if(!defined('RC_SCD_PLUGIN_URL')) {
-	define('RC_SCD_PLUGIN_URL', plugin_dir_url( __FILE__ ));
+if(!defined('LFD_PLUGIN_URL')) {
+	define('LFD_PLUGIN_URL', plugin_dir_url( __FILE__ ));
 }
+
+// plugin folder dir
+if(!defined('LFD_PLUGIN_DIR')) {
+	define('LFD_PLUGIN_DIR', plugin_dir_path( __FILE__ ));
+}
+
 
 /** Dashboard Class (inspired by https://remicorson.com/sweet-custom-dashboard/) */
 class lfd_custom_dashboard {
@@ -52,7 +58,7 @@ class lfd_custom_dashboard {
 	}
 
 	function lfd_create_dashboard() {
-		include_once( 'custom_dashboard.php'  );
+		require_once( LFD_PLUGIN_DIR . 'custom_dashboard.php' );
 	}
 }
 
