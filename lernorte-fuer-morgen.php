@@ -6,7 +6,7 @@
  * @license   AGPL-3.0+
  *
  * @wordpress-plugin
- * Plugin Name: Lernorte für MorGEN plugin
+ * Plugin Name: Lernorte für MorGEN
  * Plugin URI:  https://github.com/gen-germany/lernorte-fuer-morgen-plugin
  * Description: Specific additions for the Lernorte für MorGEN website
  * Version:     0.1.0
@@ -23,3 +23,40 @@
 if ( ! defined( 'WPINC' ) ) {
   die;
 }
+
+// plugin folder url
+if(!defined('RC_SCD_PLUGIN_URL')) {
+	define('RC_SCD_PLUGIN_URL', plugin_dir_url( __FILE__ ));
+}
+
+/** Dashboard Class (inspired by https://remicorson.com/sweet-custom-dashboard/) */
+class lfd_custom_dashboard {
+  /** Initializes the plugin by setting localization, filters, and administration functions. */
+	function __construct() {
+		add_action('admin_menu', array( &$this,'lfd_register_menu') );
+		add_action('load-index.php', array( &$this,'lfd_redirect_dashboard') );
+	}
+
+	function lfd_redirect_dashboard() {
+		if( is_admin() ) {
+			$screen = get_current_screen();
+
+			if( $screen->base == 'dashboard' ) {
+				wp_redirect( admin_url( 'index.php?page=custom-dashboard' ) );
+			}
+		}
+	}
+
+	function lfd_register_menu() {
+		add_dashboard_page( 'Custom Dashboard', 'Custom Dashboard', 'read', 'custom-dashboard', array( &$this,'lfd_create_dashboard') );
+	}
+
+	function lfd_create_dashboard() {
+		include_once( 'custom_dashboard.php'  );
+	}
+}
+
+// instantiate plugin's class
+$GLOBALS['lfd_custom_dashboard'] = new lfd_custom_dashboard();
+
+?>
