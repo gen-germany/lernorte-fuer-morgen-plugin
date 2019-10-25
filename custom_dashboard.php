@@ -17,6 +17,52 @@ $custom_post_type = 'kooperationspartner';
 <div class="about-text">
 		<?php _e('Wir hoffen wir bringen dich hiermit schnell an den Start' ); ?>
   </div>
+
+  <div>
+    <?php
+      $current_user_id  = wp_get_current_user()->ID;
+      $bildungsanbieter = pods($custom_post_type, array(
+          'limit' => 1,
+          'where' => 't.post_author = ' . $current_user_id
+        ))->fetch();
+      if( $bildungsanbieter->exists() ) {
+    ?>
+    <h3>Dein Zugang ist mit folgendem Bildungsanbieter verknüpft:</h3>
+    <?php
+        echo $bildungsanbieter->display('post_title');
+        echo $bildungsanbieter->display('permalink');
+    ?>
+    <div id="dashboard-widgets-wrap">
+      <div id="dashboard-widgets" class="metabox-holder">
+        <div id="postbox-container-1" class="postbox-container">
+          <div id="normal-sortables" class="meta-box-sortables ui-sortable">
+            <div class="postbox">
+              <div title="Click to toggle" class="handlediv"><br></div>
+              <h3 class="hndle"><span>Box Title</span></h3>
+              <div class="inside">
+                <?php echo _e("Add Veranstaltung"); ?>
+              </div>
+            </div>
+            <div class="postbox">
+              <div title="Click to toggle" class="handlediv"><br></div>
+              <h3 class="hndle"><span>Box Title</span></h3>
+              <div class="inside">
+                <?php echo _e("Add Referent*"); ?>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <?php
+      } else {
+    ?>
+    <h3>Dein Zugang ist noch nicht mit einem Bildungsanbieter verknüpft</h3>
+    <a href="/wp-admin/post-new.php?post_type=<?php echo $custom_post_type?>"><?php echo _e('Bitte lege einen an'); ?></a>
+    <?php
+      }
+    ?>
+  </div>
 	
 	<div class="changelog">
 		<h3><?php _e( 'Morbi leo risus, porta ac consectetur' ); ?></h3>
