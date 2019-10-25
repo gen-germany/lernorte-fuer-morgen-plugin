@@ -8,7 +8,9 @@ require_once( ABSPATH . 'wp-load.php' );
 require_once( ABSPATH . 'wp-admin/admin.php' );
 require_once( ABSPATH . 'wp-admin/admin-header.php' );
 
-$custom_post_type = 'kooperationspartner';
+$custom_post_type_coop    = 'kooperationspartner';
+$custom_post_type_event   = 'veranstaltung';
+$custom_post_type_referee = 'referentn';
 ?>
 <div class="wrap about-wrap">
 
@@ -21,13 +23,15 @@ $custom_post_type = 'kooperationspartner';
   <div>
     <?php
       $current_user_id  = wp_get_current_user()->ID;
-      $bildungsanbieter = pods($custom_post_type, array(
+      $bildungsanbieter = pods($custom_post_type_coop);
+      $bildungsanbieter->find(array(
           'limit' => 1,
           'where' => 't.post_author = ' . $current_user_id
-        ))->fetch();
+        ));
+      $bildungsanbieter->fetch();
       if( $bildungsanbieter->exists() ) {
     ?>
-    <h3>Dein Zugang ist mit folgendem Bildungsanbieter verknüpft:</h3>
+      <h3><?php _e("Dein Zugang ist mit folgendem Bildungsanbieter verknüpft:"); ?></h3>
     <?php
         echo $bildungsanbieter->display('post_title');
         echo $bildungsanbieter->display('permalink');
@@ -40,14 +44,14 @@ $custom_post_type = 'kooperationspartner';
               <div title="Click to toggle" class="handlediv"><br></div>
               <h3 class="hndle"><span>Box Title</span></h3>
               <div class="inside">
-                <?php echo _e("Add Veranstaltung"); ?>
+                <a href="/wp-admin/post-new.php?post_type=<?php echo $custom_post_type_event; ?>"><?php echo _e('Veranstaltung erstellen'); ?></a>
               </div>
             </div>
             <div class="postbox">
               <div title="Click to toggle" class="handlediv"><br></div>
               <h3 class="hndle"><span>Box Title</span></h3>
               <div class="inside">
-                <?php echo _e("Add Referent*"); ?>
+                <a href="/wp-admin/post-new.php?post_type=<?php echo $custom_post_type_referee; ?>"><?php echo _e('Referent*n anlegen'); ?></a>
               </div>
             </div>
           </div>
@@ -57,8 +61,8 @@ $custom_post_type = 'kooperationspartner';
     <?php
       } else {
     ?>
-    <h3>Dein Zugang ist noch nicht mit einem Bildungsanbieter verknüpft</h3>
-    <a href="/wp-admin/post-new.php?post_type=<?php echo $custom_post_type?>"><?php echo _e('Bitte lege einen an'); ?></a>
+    <h3><?php e_("Dein Zugang ist noch nicht mit einem Bildungsanbieter verknüpft");?></h3>
+    <a href="/wp-admin/post-new.php?post_type=<?php echo $custom_post_type_coop; ?>"><?php echo _e('Bitte lege einen an'); ?></a>
     <?php
       }
     ?>
