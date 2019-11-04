@@ -29,5 +29,5 @@ There is not much sense in installing this for a page different then "lernorte f
 
 ## License
 
-Released under the AGPL-3.0+
+Released under the AGPL-3.0+ (see file `LICENSE`)
 Copyright 2019 Felix Wolfsteller
