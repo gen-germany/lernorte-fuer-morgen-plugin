@@ -25,45 +25,66 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 // plugin folder url
-if(!defined('LFD_PLUGIN_URL')) {
-	define('LFD_PLUGIN_URL', plugin_dir_url( __FILE__ ));
+if(!defined('LFM_PLUGIN_URL')) {
+	define('LFM_PLUGIN_URL', plugin_dir_url( __FILE__ ));
 }
 
 // plugin folder dir
-if(!defined('LFD_PLUGIN_DIR')) {
-	define('LFD_PLUGIN_DIR', plugin_dir_path( __FILE__ ));
+if(!defined('LFM_PLUGIN_DIR')) {
+	define('LFM_PLUGIN_DIR', plugin_dir_path( __FILE__ ));
 }
 
 
-/** Dashboard Class (inspired by https://remicorson.com/sweet-custom-dashboard/) */
-class lfd_custom_dashboard {
-  /** Initializes the plugin by setting localization, filters, and administration functions. */
-	function __construct() {
-		add_action('admin_menu', array( &$this,'lfd_register_menu') );
-		add_action('load-index.php', array( &$this,'lfd_redirect_dashboard') );
-	}
+/** Custom Dashboard Widget */
+add_action('wp_dashboard_setup', 'lfm_dashboard_widgets');
 
-	function lfd_redirect_dashboard() {
-		if( is_admin() ) {
-			$screen = get_current_screen();
-
-			if( $screen->base == 'dashboard' ) {
-				wp_redirect( admin_url( 'index.php?page=custom-dashboard' ) );
-			}
-		}
-	}
-
-	function lfd_register_menu() {
-		add_dashboard_page( 'Custom Dashboard', 'Custom Dashboard', 'read', 'custom-dashboard', array( &$this,'lfd_create_dashboard') );
-	}
-
-	function lfd_create_dashboard() {
-		require_once( LFD_PLUGIN_DIR . 'custom_dashboard.php' );
-	}
+function lfm_dashboard_widgets() {
+  wp_add_dashboard_widget('lfm_help_widget', __('Lernorte für Morgen'), 'custom_dashboard_help');
+  // The other widgets should be at the side, so use add_meta_box instead
+  add_meta_box('lfm_dashboard_veranstaltungen', __('Lernorte für Morgen - Veranstaltungen'), 'lfm_dashboard_veranstaltungen', 'dashboard', 'side', 'high');
+  add_meta_box('lfm_dashboard_referentn', __('Lernorte für Morgen - Referent*n'), 'lfm_dashboard_referentn', 'dashboard', 'side', 'high');
 }
 
-// instantiate plugin's class
-$GLOBALS['lfd_custom_dashboard'] = new lfd_custom_dashboard();
+function lfm_dashboard_referentn() {
+  require_once( LFM_PLUGIN_DIR . '/dashboard/referentn_widget.php' );
+}
+
+function lfm_dashboard_veranstaltungen() {
+  require_once( LFM_PLUGIN_DIR . '/dashboard/veranstaltungen_widget.php' );
+}
+
+function custom_dashboard_help() {
+  require_once( LFM_PLUGIN_DIR . '/dashboard/help_widget.php' );
+}
+
+/* Remove unwanted dashboard widgets. Names correspond to what can be found using Inspect Element (id of widget-element). */
+function remove_dashboard_widgets() {
+ // Remove Welcome to WordPress! widget
+ // https://codex.wordpress.org/Plugin_API/Action_Reference/welcome_panel
+ remove_action( 'welcome_panel', 'wp_welcome_panel');
+
+ // Remove meta boxes to the left.
+ // At a Glance widget
+ remove_meta_box( 'dashboard_right_now', 'dashboard', 'normal' );
+ // Activity widget
+ remove_meta_box( 'dashboard_activity', 'dashboard', 'normal' );
+
+ // Remove meta boxes to the right.
+ // Quick Draft widget
+ remove_meta_box( 'dashboard_quick_press', 'dashboard', 'side' );
+ // WordPress News
+ remove_meta_box( 'dashboard_primary', 'dashboard', 'side' );
+}
+
+add_action( 'wp_dashboard_setup', 'remove_dashboard_widgets' );
+
+/** Modify Welcome Dashboard Panel */
+function lfm_dashboard_welcome_panel() {
+  require_once( LFM_PLUGIN_DIR . '/dashboard/welcome_panel.php' );
+}
+
+add_action( 'welcome_panel', 'lfm_dashboard_welcome_panel' );
+
 
 /** Make nested shortcodes (e.g. for maps) work with Pods. */
 define('PODS_SHORTCODE_ALLOW_SUB_SHORTCODES',true);
@@ -80,7 +101,7 @@ add_filter( 'pods_shortcode', function( $tags )  {
 
 // Update CSS within in Admin
 function admin_style() {
-  wp_enqueue_style('admin-styles', plugin_dir('/admin.css', __FILE__));
+  wp_enqueue_style('admin-styles', plugins_url('/admin.css', __FILE__));
 }
 add_action('admin_enqueue_scripts', 'admin_style');
 

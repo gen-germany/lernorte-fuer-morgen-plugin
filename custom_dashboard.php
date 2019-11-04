@@ -8,7 +8,7 @@ require_once( ABSPATH . 'wp-load.php' );
 require_once( ABSPATH . 'wp-admin/admin.php' );
 require_once( ABSPATH . 'wp-admin/admin-header.php' );
 
-$custom_post_type_coop    = 'kooperationspartner';
+$custom_post_type_coop    = 'bildungsanbieter';
 $custom_post_type_event   = 'veranstaltung';
 $custom_post_type_referee = 'referentn';
 ?>
