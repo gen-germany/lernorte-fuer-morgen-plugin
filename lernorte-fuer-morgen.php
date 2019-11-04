@@ -65,4 +65,17 @@ class lfd_custom_dashboard {
 // instantiate plugin's class
 $GLOBALS['lfd_custom_dashboard'] = new lfd_custom_dashboard();
 
+/** Make nested shortcodes (e.g. for maps) work with Pods. */
+define('PODS_SHORTCODE_ALLOW_SUB_SHORTCODES',true);
+/**
+* Allow Pods Templates to use shortcodes
+*
+* NOTE: Will only work if the constant PODS_SHORTCODE_ALLOW_SUB_SHORTCODES is true.
+*/
+add_filter( 'pods_shortcode', function( $tags )  {
+  $tags[ 'shortcodes' ] = true;
+
+  return $tags;
+});
+
 ?>

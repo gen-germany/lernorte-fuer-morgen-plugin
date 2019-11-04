@@ -15,6 +15,8 @@ There is not much sense in installing this for a page different then "lernorte f
 
 ## Implemented Features
 
+  * Make nested shortcodes work (although this might be removed once features implemented within this plugin TODO) - done in `lernorte-fuer-morgen.php` .
+
 ## Gotchas
 
 ## Development
