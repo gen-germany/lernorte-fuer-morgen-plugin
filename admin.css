@@ -1,0 +1,6 @@
+/* Modification of admin (backend) style */
+/* Make warning of required featured image bigger */
+
+#nofeature-message p {
+  font-size: 24px;
+}

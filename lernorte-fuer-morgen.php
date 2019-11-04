@@ -78,4 +78,10 @@ add_filter( 'pods_shortcode', function( $tags )  {
   return $tags;
 });
 
+// Update CSS within in Admin
+function admin_style() {
+  wp_enqueue_style('admin-styles', plugin_dir('/admin.css', __FILE__));
+}
+add_action('admin_enqueue_scripts', 'admin_style');
+
 ?>
