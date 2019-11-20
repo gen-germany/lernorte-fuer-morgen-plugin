@@ -14,12 +14,16 @@ $bildungsanbieter->fetch();
 
 <?php if( $bildungsanbieter->exists() ) {
     $query_params = array(
-      'where' => 'bildungsanbieter.ID = ' .$bildungsanbieter->ID
+      'where' => 'bildungsanbieter.ID = ' . $bildungsanbieter->ID
     );
-    $referentn = pods( 'referentn', $query_params )
+    $referentn = pods( $custom_post_type_referee, $query_params );
   ?>
   <p>
-    <?php _e($referentn.total()."xyz Referent*n"); ?>
+    <?php
+      /* TODO: Enhance translatability */
+      _e("Dem Bildungsanbieter sind ");
+      echo $referentn->total();
+      _e(" Referent*n zugeordnet."); ?>
   </p>
   <!--p>
     <?php _e("xyz ohne Bild! -> "); ?>
