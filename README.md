@@ -13,6 +13,10 @@ There is not much sense in installing this for a page different then "lernorte f
   * Install [github-updater](https://github.com/afragen/github-updater)
   * Use [github-updater](https://github.com/afragen/github-updater) and provide `https://github.com/gen-germany/lernorte-fuer-morgen-plugin` as the URL.
 
+### Prerequisites
+
+The plugin assumes certain pod (CPT) classes to be installed and configured which is not donw from within this plugin!
+
 ## Implemented Features
 
   * Make nested shortcodes work (although this might be removed once features implemented within this plugin TODO) - done in `lernorte-fuer-morgen.php` .
@@ -28,6 +32,14 @@ There is not much sense in installing this for a page different then "lernorte f
   * Use of German terms, because form UI for creating POD items is not easily translateable.
 
 ## Development
+
+### Release
+
+  * modify [lernorte-fuer-morgen.php](lernorte-fuer-morgen.php); bump the version number
+  * add change and commit with version number as commit message
+  * tag with version number as commit message
+  * git push
+  * git push --tags
 
 ## License
 
