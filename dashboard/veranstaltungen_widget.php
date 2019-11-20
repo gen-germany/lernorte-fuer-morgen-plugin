@@ -14,16 +14,16 @@ $bildungsanbieter->fetch();
 
 <?php if( $bildungsanbieter->exists() ) {
     $query_params = array(
-      'where' => 'bildungsanbieter.ID = ' . $bildungsanbieter->ID
+      'where' => 'bildungsanbieter.ID = ' . $bildungsanbieter->ID()
     );
     $veranstaltungen = pods( $custom_post_type_event, $query_params );
   ?>
   <p>
     <?php
-      /* TODO: Enhance translatability */
+      /* TODO: Enhance translatability, also cover "none" case */
       _e("Dem Bildungsanbieter sind ");
-      echo $referentn->total();
-      _e(" Veranstaltungen zugeordnet."); ?>
+      echo $veranstaltungen->total();
+      _e(" Veranstaltung(en) zugeordnet."); ?>
   </p>
   <!--p>
     <?php _e("xyz ohne Bild! -> "); ?>

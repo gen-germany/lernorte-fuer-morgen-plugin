@@ -14,7 +14,7 @@ $bildungsanbieter->fetch();
 
 <?php if( $bildungsanbieter->exists() ) {
     $query_params = array(
-      'where' => 'bildungsanbieter.ID = ' . $bildungsanbieter->ID
+      'where' => 'bildungsanbieter.ID = ' . $bildungsanbieter->ID()
     );
     $referentn = pods( $custom_post_type_referee, $query_params );
   ?>
