@@ -25,6 +25,8 @@ There is not much sense in installing this for a page different then "lernorte f
 
 ## Gotchas
 
+  * Use of German terms, because form UI for creating POD items is not easily translateable.
+
 ## Development
 
 ## License
