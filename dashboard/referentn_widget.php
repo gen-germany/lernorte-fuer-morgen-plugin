@@ -12,11 +12,16 @@ $bildungsanbieter->find(array(
 $bildungsanbieter->fetch();
 ?>
 
-<?php if( $bildungsanbieter->exists() ) { ?>
+<?php if( $bildungsanbieter->exists() ) {
+    $query_params = array(
+      'where' => 'bildungsanbieter.ID = ' .$bildungsanbieter->ID
+    );
+    $referentn = pods( 'referentn', $query_params )
+  ?>
   <p>
-    <?php _e("xyz Referent*n"); ?>
+    <?php _e($referentn.total()."xyz Referent*n"); ?>
   </p>
-  <p>
+  <!--p>
     <?php _e("xyz ohne Bild! -> "); ?>
   </p-->
   <a class="page-title-action" href="/wp-admin/post-new.php?post_type=<?php echo $custom_post_type_referee; ?>">
