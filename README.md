@@ -15,7 +15,8 @@ There is not much sense in installing this for a page different then "lernorte f
 
 ### Prerequisites
 
-The plugin assumes certain pod (CPT) classes to be installed and configured which is not donw from within this plugin!
+The plugin assumes certain pod (CPT) classes to be installed and configured which is not (yet?) done from within this plugin!
+Eventually, the pods/CPTs could be create by this plugin, but I am not yet sure how and whether this is always a good idea. Happy about comments.
 
 ## Implemented Features
 
