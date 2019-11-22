@@ -38,6 +38,7 @@ Eventually, the pods/CPTs could be create by this plugin, but I am not yet sure 
 
   * modify [lernorte-fuer-morgen.php](lernorte-fuer-morgen.php); bump the version number
   * add change and commit with version number as commit message
+    * make sure it is the same (and use '0.1.2' instead of 'v0.1.2')
   * tag with version number as commit message
   * git push
   * git push --tags
