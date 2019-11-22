@@ -4,3 +4,8 @@
 #nofeature-message p {
   font-size: 24px;
 }
+
+#lfm_help_widget div {
+  line-height: 1.5;
+  margin: 1em 0;
+}
