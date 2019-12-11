@@ -27,6 +27,11 @@ Eventually, the pods/CPTs could be create by this plugin, but I am not yet sure 
     * add custom welcome box
     * add custom help box
     * add custom widgets for events and referees
+  * Modify certain admin forms for own content types via css ::before
+  * Restrict media usage of users to own media
+    - Code from https://plugins.trac.wordpress.org/browser/restrict-author-posting/trunk/readme.txt
+    - licensed under GPLv2 or later, Copyright Jam Việt 2015 (https://plugins.trac.wordpress.org/browser/restrict-author-posting/trunk/restrict-author-posting.php)
+    - GPLv3 is included in this repository
 
 ## Gotchas
 
@@ -45,5 +50,14 @@ Eventually, the pods/CPTs could be create by this plugin, but I am not yet sure 
 
 ## License
 
-Released under the AGPL-3.0+ (see file `LICENSE`)
+Except for parts mentioned below released under the AGPL-3.0+ (see file `LICENSE`)
 Copyright 2019 Felix Wolfsteller
+
+### Parts with other licenses
+
+#### [restrict-media/restrict-media.php]
+
+  * Source: http://www.jamviet.com/2015/05/restrict-author-posting.html , https://plugins.trac.wordpress.org/browser/restrict-author-posting/trunk
+  * Originally licensed under GPLv2+, Copyright 2015 Jam Việt, relicensed in the lernorte-fuer-morgen-plugin under the GPLv3.
+  * For transparency reasons the initial commit in the lernorte-fuer-morgen git-repository for the file contains the original source code and was stripped and modified by Felix Wolfsteller afterwards.
+  
