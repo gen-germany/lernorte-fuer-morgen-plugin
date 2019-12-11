@@ -1,3 +1,5 @@
+<?php
+
 /*
  * Originally licensed under GPLv2+, Copyright 2015 Jam Việt, relicensed in the lernorte-fuer-morgen-plugin under the GPLv3.
  * Source: http://www.jamviet.com/2015/05/restrict-author-posting.html , https://plugins.trac.wordpress.org/browser/restrict-author-posting/trunk
@@ -15,8 +17,6 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: http://www.jamviet.com/2015/05/restrict-author-posting.html
 */
-
-<?php
 
 /* Restrict User using own Media */
 function jamviet_restrict_author_file_in_media( $wp_query = array() ) {
