@@ -1,6 +1,6 @@
 /* Modification of admin (backend) style */
-/* Make warning of required featured image bigger */
 
+/* Make warning of required featured image bigger */
 #nofeature-message p {
   font-size: 24px;
 }
@@ -15,4 +15,23 @@
 #lfm_help_widget li {
   list-style-type: square;
   list-style-position: inside;
+}
+
+/* Modify title text input display in wordpress admin form for Bildungsanbieter. */
+.post-type-bildungsanbieter #titlediv::before {
+  content: "Name des Bildungsanbieters";
+  display: block;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+/* Modify content text editor display in wordpress admin form for Bildungsanbieter. */
+.post-type-bildungsanbieter #wp-content-wrap::before {
+  content: "Beschreibung des Bildungsanbieters";
+  display: block;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 12px;
+  margin-top: 12px;
 }
