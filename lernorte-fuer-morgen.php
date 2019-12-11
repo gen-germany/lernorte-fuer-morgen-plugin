@@ -117,4 +117,6 @@ function admin_style() {
 /* Update CSS within Admin backend */
 add_action('admin_enqueue_scripts', 'admin_style');
 
+require_once( LFM_PLUGIN_DIR . '/restrict-media/restrict-media.php' );
+
 ?>
