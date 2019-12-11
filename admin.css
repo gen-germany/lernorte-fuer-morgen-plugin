@@ -21,8 +21,13 @@
 .post-type-bildungsanbieter #titlediv::before {
   content: "Name des Bildungsanbieters";
   display: block;
-  font-size: 16px;
-  font-weight: bold;
+
+  color: rgb(35,40,45);
+  font-size: 14px;
+  font-weight: 600;
+
+  line-height: 19.6px;
+
   margin-bottom: 12px;
 }
 
@@ -30,8 +35,72 @@
 .post-type-bildungsanbieter #wp-content-wrap::before {
   content: "Beschreibung des Bildungsanbieters";
   display: block;
-  font-size: 16px;
-  font-weight: bold;
+
+  color: rgb(35,40,45);
+  font-size: 14px;
+  font-weight: 600;
+
+  line-height: 19.6px;
+
   margin-bottom: 12px;
   margin-top: 12px;
 }
+
+/* Modify title text input display in wordpress admin form for Referentn. */
+.post-type-referentn #titlediv::before {
+  content: "Name de* Referent*n (Vorname Nachname ODER Künstlername)";
+  display: block;
+
+  color: rgb(35,40,45);
+  font-size: 14px;
+  font-weight: 600;
+
+  line-height: 19.6px;
+
+  margin-bottom: 12px;
+}
+
+/* Modify content text editor display in wordpress admin form for Referent*n. */
+.post-type-referentn #wp-content-wrap::before {
+  content: "Beschreibung de* Referent*n";
+  display: block;
+
+  color: rgb(35,40,45);
+  font-size: 14px;
+  font-weight: 600;
+
+  line-height: 19.6px;
+
+  margin-bottom: 12px;
+  margin-top: 12px;
+}
+
+/* Modify title text input display in wordpress admin form for Veranstaltungen. */
+.post-type-veranstaltung #titlediv::before {
+  content: "Name der Veranstaltung";
+  display: block;
+
+  color: rgb(35,40,45);
+  font-size: 14px;
+  font-weight: 600;
+
+  line-height: 19.6px;
+
+  margin-bottom: 12px;
+}
+
+/* Modify content text editor display in wordpress admin form for Bildungsanbieter. */
+.post-type-veranstaltung #wp-content-wrap::before {
+  content: "Beschreibung der Veranstaltung";
+  display: block;
+
+  color: rgb(35,40,45);
+  font-size: 14px;
+  font-weight: 600;
+
+  line-height: 19.6px;
+
+  margin-bottom: 12px;
+  margin-top: 12px;
+}
+
