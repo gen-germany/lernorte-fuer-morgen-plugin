@@ -40,7 +40,7 @@ add_action('wp_dashboard_setup', 'lfm_dashboard_widgets');
 
 /** Callback to add dashboard widget and meta boxes */
 function lfm_dashboard_widgets() {
-  wp_add_dashboard_widget('lfm_help_widget', __('Lernorte für Morgen'), 'custom_dashboard_help');
+  wp_add_dashboard_widget('lfm_help_widget', __('Lernorte für Morgen'), 'lfm_custom_dashboard_help');
   // The other widgets should be at the side, so use add_meta_box instead
   add_meta_box('lfm_dashboard_veranstaltungen',
     __('Lernorte für Morgen - Veranstaltungen'),
@@ -62,13 +62,13 @@ function lfm_dashboard_veranstaltungen() {
 }
 
 /** Callback for the dashboard help widget */
-function custom_dashboard_help() {
+function lfm_custom_dashboard_help() {
   require_once( LFM_PLUGIN_DIR . '/dashboard/help_widget.php' );
 }
 
 /** Callback to remove unwanted dashboard widgets.
   * Names correspond to what can be found using Inspect Element (id of widget-element). */
-function remove_dashboard_widgets() {
+function lfm_remove_dashboard_widgets() {
  // Remove Welcome to WordPress! widget
  // https://codex.wordpress.org/Plugin_API/Action_Reference/welcome_panel
  remove_action( 'welcome_panel', 'wp_welcome_panel');
@@ -87,7 +87,7 @@ function remove_dashboard_widgets() {
 }
 
 /** Remove default dashboard widgets */
-add_action( 'wp_dashboard_setup', 'remove_dashboard_widgets' );
+add_action( 'wp_dashboard_setup', 'lfm_remove_dashboard_widgets' );
 
 /** Modify Welcome Dashboard Panel */
 function lfm_dashboard_welcome_panel() {
@@ -111,22 +111,23 @@ add_filter( 'pods_shortcode', function( $tags )  {
 });
 
 /* Callback to update CSS within in Admin */
-function admin_style() {
+function lfm_admin_style() {
   wp_enqueue_style('admin-styles', plugins_url('/admin.css', __FILE__));
 }
 /* Update CSS within Admin backend */
-add_action('admin_enqueue_scripts', 'admin_style');
+add_action('admin_enqueue_scripts', 'lfm_admin_style');
 
 include( LFM_PLUGIN_DIR . '/restrict-media/restrict-media.php' );
 
 /* Auto-select first Bildungsanbieter when not set and saving a Veranstaltung (pre-save). */
-add_filter('pods_api_pre_save_pod_item_veranstaltung', 'autoselect_bildungsanbieter', 10, 2);
-function autoselect_bildungsanbieter($pieces, $is_new_item) {
+add_filter('pods_api_pre_save_pod_item_veranstaltung', 'lfm_autoselect_bildungsanbieter', 10, 2);
+
+function lfm_autoselect_bildungsanbieter($pieces, $is_new_item) {
   // PHP special: '' == NULL (but not ===)
   if ($pieces[ 'fields' ][ 'bildungsanbieter' ][ 'value' ] == NULL) {
     // Mark field as 'dirty', to process changes.
     if ( ! isset( $pieces[ 'fields_active' ][ 'bildungsanbieter' ] ) ) {
-      array_push ($pieces[ 'fields_active' ], 'bildungsanbieter' );
+	  	array_push ($pieces[ 'fields_active' ], 'bildungsanbieter' );
     }
     // Find relevant bildungsanbieter
     $params = array(
