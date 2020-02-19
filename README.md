@@ -15,24 +15,33 @@ There is not much sense in installing this for a page different then "lernorte f
 
 ### Prerequisites
 
-The plugin assumes certain pod (CPT) classes to be installed and configured which is not (yet?) done from within this plugin!
+The plugin assumes certain [pod](pods.io) (CPT) classes to be installed and configured which is not (yet?) done from within this plugin!
 Eventually, the pods/CPTs could be create by this plugin, but I am not yet sure how and whether this is always a good idea. Happy about comments.
 
 ## Implemented Features
 
+**Technical**
   * Make nested shortcodes work (although this might be removed once features implemented within this plugin TODO) - done in `lernorte-fuer-morgen.php` .
+
+**Styling**
   * Modify style of require featured image plugin, so that the warning shows up bigger.
+
+**Dashboard**
   * Modify Dashboard:
     * remove default widgets
     * add custom welcome box
     * add custom help box
     * add custom widgets for events and referees
+
+**"POD"ish**
   * Modify certain admin forms for own content types via css ::before
+  * Force default setting of `bildungsanbieter` when creating a `veranstaltung` (`function autoselect_bildungsanbieter()`).
+
+**Editing**
   * Restrict media usage of users to own media (exception: users with 'administrator' role)
     - Code from https://plugins.trac.wordpress.org/browser/restrict-author-posting/trunk/readme.txt
     - licensed under GPLv2 or later, Copyright Jam Việt 2015 (https://plugins.trac.wordpress.org/browser/restrict-author-posting/trunk/restrict-author-posting.php)
     - GPLv3 is included in this repository
-  * Force default setting of `bildungsanbieter` when creating a `veranstaltung` (`function autoselect_bildungsanbieter()`).
   * In (classic) editor for non-admins, hide:
     - pods shortcode generator
     - media buttons
@@ -49,9 +58,8 @@ Eventually, the pods/CPTs could be create by this plugin, but I am not yet sure 
   * modify [lernorte-fuer-morgen.php](lernorte-fuer-morgen.php); bump the version number
   * add change and commit with version number as commit message
     * make sure it is the same (and use '0.1.2' instead of 'v0.1.2')
-  * tag with version number as commit message
-  * git push
-  * git push --tags
+  * tag with version number as commit message (`git tag -a '0.1.2' -m '0.1.2'`)
+  * `git push && git push --tags`
 
 ### Debugging
 
@@ -72,7 +80,7 @@ define( 'WP_DEBUG_DISPLAY', false );
 ## License
 
 Except for parts mentioned below released under the AGPL-3.0+ (see file `LICENSE`)
-Copyright 2019 Felix Wolfsteller
+Copyright 2019,2020 Felix Wolfsteller
 
 ### Parts with other licenses
 
