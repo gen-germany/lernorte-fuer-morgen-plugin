@@ -49,6 +49,7 @@ Eventually, the pods/CPTs could be create by this plugin, but I am not yet sure 
     - visual/text tab
 
 **Shortcodes**
+([shortcodes/shortcodes.php](shortcodes/shortcodes.php))
   * [veranstaltungen_count] returns number of `veranstaltung` entities
   * [referentn_count] returns number of `referentn` entities
   * [bildungsanbieter_count] returns number of `bildungsanbieter` entities
