@@ -34,6 +34,8 @@ Eventually, the pods/CPTs could be create by this plugin, but I am not yet sure 
     * add custom widgets for events and referees
 
 **"POD"ish**
+([pods/](pods/))
+
   * Modify certain admin forms for own content types via css ::before
   * Force default setting of `bildungsanbieter` when creating a `veranstaltung` (`function autoselect_bildungsanbieter()`).
 
