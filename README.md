@@ -33,6 +33,10 @@ Eventually, the pods/CPTs could be create by this plugin, but I am not yet sure 
     - licensed under GPLv2 or later, Copyright Jam Việt 2015 (https://plugins.trac.wordpress.org/browser/restrict-author-posting/trunk/restrict-author-posting.php)
     - GPLv3 is included in this repository
   * Force default setting of `bildungsanbieter` when creating a `veranstaltung` (`function autoselect_bildungsanbieter()`).
+  * In (classic) editor for non-admins, hide:
+    - pods shortcode generator
+    - media buttons
+    - visual/text tab
 
 ## Gotchas
 
