@@ -28,7 +28,7 @@ Eventually, the pods/CPTs could be create by this plugin, but I am not yet sure 
     * add custom help box
     * add custom widgets for events and referees
   * Modify certain admin forms for own content types via css ::before
-  * Restrict media usage of users to own media
+  * Restrict media usage of users to own media (exception: users with 'administrator' role)
     - Code from https://plugins.trac.wordpress.org/browser/restrict-author-posting/trunk/readme.txt
     - licensed under GPLv2 or later, Copyright Jam Việt 2015 (https://plugins.trac.wordpress.org/browser/restrict-author-posting/trunk/restrict-author-posting.php)
     - GPLv3 is included in this repository
@@ -52,6 +52,22 @@ Eventually, the pods/CPTs could be create by this plugin, but I am not yet sure 
   * tag with version number as commit message
   * git push
   * git push --tags
+
+### Debugging
+
+*Because I always forget how to*
+
+In `wp-config.php`
+```
+define( 'WP_DEBUG', true );
+define( 'WP_DEBUG_LOG', true );
+define( 'WP_DEBUG_DISPLAY', false );
+```
+
+- Then use `error_log` to write to the default debug file (`wp-content/debug.log`).
+- Use `json_encode()` to get a JSON representation of a complicated object.
+- Or use `print_r` to print datastructures
+
 
 ## License
 
