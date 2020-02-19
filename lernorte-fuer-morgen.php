@@ -120,6 +120,7 @@ add_action('admin_enqueue_scripts', 'lfm_admin_style');
 include( LFM_PLUGIN_DIR . '/restrict-media/restrict-media.php' );
 
 include( LFM_PLUGIN_DIR . '/shortcodes/shortcodes.php' );
+include( LFM_PLUGIN_DIR . '/editor_ui/editor_ui.php' );
 
 /* Auto-select first Bildungsanbieter when not set and saving a Veranstaltung (pre-save). */
 add_filter('pods_api_pre_save_pod_item_veranstaltung', 'lfm_autoselect_bildungsanbieter', 10, 2);
@@ -164,38 +165,5 @@ function lfm_et_project_posttype_args( $args ) {
 	));
 }
 
-/**
- * Remove pods shortcode editor and other buttons for non-admins.
- */
-add_action( 'admin_init', 'lfm_remove_editor_buttons', 14 );
-function lfm_remove_editor_buttons () {
-  $user = wp_get_current_user();
-  if ( in_array( 'administrator', (array) $user->roles ) ) {
-    # Admins see everything.
-  }
-  else {
-    remove_action( 'media_buttons', array( PodsInit::$admin, 'media_button' ), 12 );
-    remove_action( 'media_buttons', 'media_buttons' );
-  }
-}
-
-/**
- * Remove Visual/Text tab from editor if non-admin.
- */
-add_filter( 'admin_footer', 'lfm_remove_editor_tabs_css', 99);
-
-function lfm_remove_editor_tabs_css(){
-  $user = wp_get_current_user();
-  if ( in_array( 'administrator', (array) $user->roles ) ) {
-    # Admins see everything.
-  }
-  else {
-    echo '  <style type="text/css">
-      .wp-editor-tabs {
-        display:none;
-      }
-    </style>';
-  }
-}
 
 ?>
