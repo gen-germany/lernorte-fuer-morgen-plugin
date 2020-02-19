@@ -119,6 +119,8 @@ add_action('admin_enqueue_scripts', 'lfm_admin_style');
 
 include( LFM_PLUGIN_DIR . '/restrict-media/restrict-media.php' );
 
+include( LFM_PLUGIN_DIR . '/shortcodes/shortcodes.php' );
+
 /* Auto-select first Bildungsanbieter when not set and saving a Veranstaltung (pre-save). */
 add_filter('pods_api_pre_save_pod_item_veranstaltung', 'lfm_autoselect_bildungsanbieter', 10, 2);
 

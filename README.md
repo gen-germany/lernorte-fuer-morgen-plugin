@@ -42,10 +42,16 @@ Eventually, the pods/CPTs could be create by this plugin, but I am not yet sure 
     - Code from https://plugins.trac.wordpress.org/browser/restrict-author-posting/trunk/readme.txt
     - licensed under GPLv2 or later, Copyright Jam Việt 2015 (https://plugins.trac.wordpress.org/browser/restrict-author-posting/trunk/restrict-author-posting.php)
     - GPLv3 is included in this repository
+  * Remove divis default "Project" admin menu item
   * In (classic) editor for non-admins, hide:
     - pods shortcode generator
     - media buttons
     - visual/text tab
+
+**Shortcodes**
+  * [veranstaltungen_count] returns number of `veranstaltung` entities
+  * [referentn_count] returns number of `referentn` entities
+  * [bildungsanbieter_count] returns number of `bildungsanbieter` entities
 
 ## Gotchas
 
