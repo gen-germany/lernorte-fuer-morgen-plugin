@@ -19,7 +19,7 @@ Donate link: http://www.jamviet.com/2015/05/restrict-author-posting.html
 */
 
 /* Restrict User using own Media except for admin */
-function jamviet_restrict_author_file_in_media( $wp_query = array() ) {
+function lfm_restrict_author_file_in_media( $wp_query = array() ) {
   $user = wp_get_current_user();
   if ( in_array( 'administrator', (array) $user->roles ) ) {
     // The user has the "administrator" role, can see all media.
@@ -31,5 +31,5 @@ function jamviet_restrict_author_file_in_media( $wp_query = array() ) {
   }
   return $wp_query;
 }
-add_filter('ajax_query_attachments_args', 'jamviet_restrict_author_file_in_media');
+add_filter('ajax_query_attachments_args', 'lfm_restrict_author_file_in_media');
 
