@@ -39,6 +39,11 @@ Eventually, the pods/CPTs could be create by this plugin, but I am not yet sure 
   * Modify certain admin forms for own content types via css ::before
   * Force default setting of `bildungsanbieter` when creating a `veranstaltung` (`function autoselect_bildungsanbieter()`).
 
+**Admin/UI**
+([admin/](admin/))
+  * Hide irrelevant options from profile editing page for users.
+  * Remove Wordpress "Help" links
+
 **Editing**
 ([editor_ui/editor_ui.php](editor_ui/editor_ui.php))
   * Restrict media usage of users to own media (exception: users with 'administrator' role)
