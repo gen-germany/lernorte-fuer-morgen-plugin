@@ -125,6 +125,7 @@ include( LFM_PLUGIN_DIR . '/pods/referentn_save.php' );
 include( LFM_PLUGIN_DIR . '/pods/bildungsanbieter_save.php' );
 include( LFM_PLUGIN_DIR . '/admin/profile_page.php' );
 include( LFM_PLUGIN_DIR . '/admin/remove_help.php' );
+include( LFM_PLUGIN_DIR . '/admin/excerpt_labels.php' );
 
 
 /**
