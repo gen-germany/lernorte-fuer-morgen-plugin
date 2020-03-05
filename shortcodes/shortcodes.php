@@ -36,4 +36,21 @@ function lfm_shortcode_number_veranstaltungen() {
 }
 add_shortcode('veranstaltungen_count', 'lfm_shortcode_number_veranstaltungen' );
 
+/**
+ * Shortcode to display links to (upcoming) months
+ */
+function lfm_shortcode_upcoming_months_links() {
+  $num_month = 8;
+
+  $i = 0;
+  while( $i++ < $num_month ) {
+    $month_date = mktime(0, 0, 0, date('n') + $i);
+    $month_name = date_i18n( 'F', $month_date, 1 );
+    echo "<a href=\"calendar/" . date( 'M', $month_date ) . "\">" . $month_name . "</a>";
+  }
+
+  }
+}
+add_shortcode('upcoming_months_links', 'lfm_shortcode_upcoming_months_links' );
+
 ?>
