@@ -9,7 +9,7 @@
  * Plugin Name: Lernorte für MorGEN
  * Plugin URI:  https://github.com/gen-germany/lernorte-fuer-morgen-plugin
  * Description: Specific additions for the Lernorte für MorGEN website
- * Version:     0.2.0
+ * Version:     0.2.1
  * Author:      Felix Wolfsteller
  * Author URI:  https://econya.de
  * Text Domain: lernorte-fuer-morgen
