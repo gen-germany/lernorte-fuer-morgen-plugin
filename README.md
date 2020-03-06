@@ -91,6 +91,7 @@ define( 'WP_DEBUG_DISPLAY', false );
 - Then use `error_log` to write to the default debug file (`wp-content/debug.log`).
 - Use `json_encode()` to get a JSON representation of a complicated object.
 - Or use `print_r` to print datastructures
+- Also `var_dump` comes helpful for variables / datastructures sometimes
 
 
 ## License
