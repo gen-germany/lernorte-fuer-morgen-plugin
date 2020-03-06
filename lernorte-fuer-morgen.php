@@ -60,22 +60,11 @@ include( LFM_PLUGIN_DIR . '/admin/profile_page.php' );
 include( LFM_PLUGIN_DIR . '/admin/remove_help.php' );
 include( LFM_PLUGIN_DIR . '/admin/excerpt_labels.php' );
 
+include( LFM_PLUGIN_DIR . '/divi/divi.php' );
+
 include( LFM_PLUGIN_DIR . '/search/calendar.php' );
 
 
-/**
- * Remove the Divi "Project" stuff from backend.
- */
-add_filter( 'et_project_posttype_args', 'lfm_et_project_posttype_args', 10, 1 );
-function lfm_et_project_posttype_args( $args ) {
-	return array_merge( $args, array(
-		'public'              => false,
-		'exclude_from_search' => false,
-		'publicly_queryable'  => false,
-		'show_in_nav_menus'   => false,
-		'show_ui'             => false
-	));
-}
 
 
 ?>
