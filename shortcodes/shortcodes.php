@@ -46,7 +46,7 @@ function lfm_shortcode_upcoming_months_links() {
   while( $i++ < $num_month ) {
     $month_date = mktime(0, 0, 0, date('n') + $i);
     $month_name = date_i18n( 'F', $month_date, 1 );
-    echo "<a href=\"calendar/2020/" . date( 'm', $month_date ) . "\">" . $month_name . "</a>";
+    echo "<a href=\"/veranstaltungen/2020/" . date( 'm', $month_date ) . "\">" . $month_name . "</a> ";
   }
   //->modify( 'first day of next month' );
   //$final = date("Y-m-d", strtotime("+1 month", $time));
@@ -82,6 +82,8 @@ function lfm_shortcode_event_list_month() {
     //'limit' => 15,
     'where' => "CAST(start_datum.meta_value AS DATE) >= '" . $beginning_of_month->format('Y/m/d') . "'" . " AND CAST(start_datum.meta_value AS DATE) <= '" . $end_of_month->format('Y/m/d') . "'"
   );
+
+  $pods = pods( 'veranstaltung', $params );
 
   while ( $pods->fetch() ) {
     echo $pods->display( 'name' );
