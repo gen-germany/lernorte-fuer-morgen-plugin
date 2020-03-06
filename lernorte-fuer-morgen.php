@@ -60,6 +60,8 @@ include( LFM_PLUGIN_DIR . '/admin/profile_page.php' );
 include( LFM_PLUGIN_DIR . '/admin/remove_help.php' );
 include( LFM_PLUGIN_DIR . '/admin/excerpt_labels.php' );
 
+include( LFM_PLUGIN_DIR . '/search/calendar.php' );
+
 
 /**
  * Remove the Divi "Project" stuff from backend.
