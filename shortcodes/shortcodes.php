@@ -46,11 +46,49 @@ function lfm_shortcode_upcoming_months_links() {
   while( $i++ < $num_month ) {
     $month_date = mktime(0, 0, 0, date('n') + $i);
     $month_name = date_i18n( 'F', $month_date, 1 );
-    echo "<a href=\"calendar/" . date( 'M', $month_date ) . "\">" . $month_name . "</a>";
+    echo "<a href=\"calendar/2020/" . date( 'm', $month_date ) . "\">" . $month_name . "</a>";
+  }
+  //->modify( 'first day of next month' );
+  //$final = date("Y-m-d", strtotime("+1 month", $time));
+}
+add_shortcode('lfm_upcoming_months_links', 'lfm_shortcode_upcoming_months_links' );
+
+/**
+ * Shortcode to display a list of events
+ */
+function lfm_shortcode_event_list_month() {
+  ob_start();
+
+  $calendar_month = get_query_var( 'calendar_month' );
+  $calendar_year  = get_query_var( 'calendar_year' );
+
+  if( !$calendar_month ) {
+    $today = strtotime('today');
+    $calendar_month = date( 'm', $today );
+  }
+  if( !$calendar_year ) {
+    $today = strtotime('today');
+    $calendar_year = date( 'y', $today );
   }
 
+  $beginning_of_month_str = $calendar_year . '-' . str_pad($calendar_month, 2, "0", STR_PAD_LEFT) . '-' . '01';
+
+  $beginning_of_month = new DateTime(beginning_of_month_str);
+  $end_of_month       = new DateTime($beginning_of_month_str);
+  $end_of_month->modify('last day of');
+
+  $params = array(
+    'orderby' => 'start_datum ASC',
+    //'limit' => 15,
+    'where' => "CAST(start_datum.meta_value AS DATE) >= '" . $beginning_of_month->format('Y/m/d') . "'" . " AND CAST(start_datum.meta_value AS DATE) <= '" . $end_of_month->format('Y/m/d') . "'"
+  );
+
+  while ( $pods->fetch() ) {
+    echo $pods->display( 'name' );
   }
+
+  return ob_get_clean();
 }
-add_shortcode('upcoming_months_links', 'lfm_shortcode_upcoming_months_links' );
+add_shortcode('lfm_event_list_month', 'lfm_shortcode_event_list_month' );
 
 ?>
