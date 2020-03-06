@@ -73,7 +73,7 @@ function lfm_shortcode_event_list_month() {
 
   $beginning_of_month_str = $calendar_year . '-' . str_pad($calendar_month, 2, "0", STR_PAD_LEFT) . '-' . '01';
 
-  $beginning_of_month = new DateTime(beginning_of_month_str);
+  $beginning_of_month = new DateTime($beginning_of_month_str);
   $end_of_month       = new DateTime($beginning_of_month_str);
   $end_of_month->modify('last day of');
 
