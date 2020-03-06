@@ -58,9 +58,10 @@ Eventually, the pods/CPTs could be create by this plugin, but I am not yet sure 
 
 **Shortcodes**
 ([shortcodes/shortcodes.php](shortcodes/shortcodes.php))
-  * [veranstaltungen_count] returns number of `veranstaltung` entities
-  * [referentn_count] returns number of `referentn` entities
-  * [bildungsanbieter_count] returns number of `bildungsanbieter` entities
+  * [lfm_veranstaltungen_count] returns number of `veranstaltung` entities
+  * [lfm_referentn_count] returns number of `referentn` entities
+  * [lfm_bildungsanbieter_count] returns number of `bildungsanbieter` entities
+  * [lfm_month_links] shows links per (upcoming) month
 
 ## Gotchas
 

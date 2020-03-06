@@ -10,7 +10,7 @@ function lfm_shortcode_number_bildungsanbieter() {
   $bildungsanbieter = pods('bildungsanbieter', $params);
   return $bildungsanbieter->total_found();
 }
-add_shortcode('bildungsanbieter_count', 'lfm_shortcode_number_bildungsanbieter' );
+add_shortcode('lfm_bildungsanbieter_count', 'lfm_shortcode_number_bildungsanbieter' );
 
 /**
  * Shortcode to display number of referent*n.
@@ -22,7 +22,7 @@ function lfm_shortcode_number_referentn() {
   $referentn = pods('referentn', $params);
   return $referentn->total_found();
 }
-add_shortcode('referentn_count', 'lfm_shortcode_number_referentn' );
+add_shortcode('lfm_referentn_count', 'lfm_shortcode_number_referentn' );
 
 /**
  * Shortcode to display number of veranstaltungen.
@@ -34,7 +34,7 @@ function lfm_shortcode_number_veranstaltungen() {
   $veranstaltungen = pods('veranstaltungen', $params);
   return $veranstaltungen->total_found();
 }
-add_shortcode('veranstaltungen_count', 'lfm_shortcode_number_veranstaltungen' );
+add_shortcode('lfm_veranstaltungen_count', 'lfm_shortcode_number_veranstaltungen' );
 
 /**
  * Shortcode to display links to (upcoming) months
