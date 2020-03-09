@@ -8,9 +8,9 @@ function lfm_add_calendar_menu_items ( $items, $args ) {
 }*/
 
 function lfm_add_calendar_items ( $items, $args) {
-	// Only attach to main menu
-	if ( 'primary-menu' !== $args->theme_location ) {
-		return $items;
+  // Only attach to main menu
+  if ( 'primary-menu' !== $args->theme_location ) {
+    return $items;
   }
 
   $initial_calendar_nav_parent_id = 9997771;
