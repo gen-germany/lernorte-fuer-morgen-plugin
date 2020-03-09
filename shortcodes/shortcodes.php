@@ -96,4 +96,45 @@ function lfm_shortcode_event_list_month() {
 }
 add_shortcode('lfm_event_list_month', 'lfm_shortcode_event_list_month' );
 
+
+/** Hop over all referentn and output their lastnames first letter. */
+function lfm_shortcode_referentn_list() {
+  $params = array(
+    'orderby' => 'nachname',
+    'limit'   => -1
+  );
+
+  $pods = pods( 'referentn', $params );
+
+  $current_first_letter = '';
+
+  if ( $pods->total() > 0 ) {
+    while( $pods->fetch() )  {
+      // reset id to use a single template
+      $pods->id = $pods->id();
+      $nachname = $pods->field( 'nachname' );
+
+      if (mb_substr($nachname, 0, 1, "UTF-8") !== $current_first_letter) {
+        $current_first_letter = mb_substr($nachname, 0, 1, "UTF-8");
+        echo "<h2>" . $current_first_letter . "</h2>";
+      }
+
+      $temp = $pods->template( 'Referent*n: Single' );
+
+      // Output rendered template if it exists
+      if ( isset( $temp ) ) {
+        //echo $pods->display( 'nachname' );
+        echo $temp;
+        //echo $pods->field('nachname');
+      }
+    }
+    // Pagination
+    echo $pods->pagination();
+  }
+  else {
+    echo 'No content found.';
+  }
+}
+add_shortcode('lfm_referentn_list', 'lfm_shortcode_referentn_list' );
+
 ?>
