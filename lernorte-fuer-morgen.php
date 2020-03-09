@@ -62,6 +62,8 @@ include( LFM_PLUGIN_DIR . '/admin/excerpt_labels.php' );
 
 include( LFM_PLUGIN_DIR . '/divi/divi.php' );
 
+include( LFM_PLUGIN_DIR . '/nav/auto_menu.php' );
+
 include( LFM_PLUGIN_DIR . '/search/calendar.php' );
 
 
