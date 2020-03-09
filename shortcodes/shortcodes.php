@@ -78,7 +78,7 @@ function lfm_shortcode_event_list_month() {
 
   $beginning_of_month = new DateTime($beginning_of_month_str);
   $end_of_month       = new DateTime($beginning_of_month_str);
-  $end_of_month->modify('last day of');
+  $end_of_month->modify( 'last day of' );
 
   $params = array(
     'orderby' => 'start_datum ASC',
