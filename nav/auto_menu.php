@@ -13,8 +13,8 @@ function lfm_add_calendar_items ( $items, $args) {
     return $items;
   }
 
-  $initial_calendar_nav_parent_id = 9997771;
-  $current_walk_id = $initial_calendar_nav_parent_id;
+  $cal_nav_pseudo_id  = 9997771;
+  $year_nav_pseudo_id = $cal_nav_pseudo_id + 1;
 
   $today_dt = new DateTime();
   $today_dt->modify( 'first of month' );
@@ -25,21 +25,24 @@ function lfm_add_calendar_items ( $items, $args) {
   $items[] = (object) array(
     'title' => "Kalender",
     'ID'    => 'nav_cal',
-    'db_id' => $initial_calendar_nav_parent_id,
+    'db_id' => $cal_nav_pseudo_id,
     'current' => false,
     'target'  => '',
+    'xfn'     => '',
     'classes' => array( 'menu-item', 'menu-item-has-children' ),
-    'url' => 'https://bog.us'
+    'url' => 'veranstaltungen/' . $current_year
   );
+
   $items[] = (object) array(
     'title' => $current_year,
     'ID' => 'nav_current_year',
-    'menu_item_parent' => $initial_calendar_nav_parent_id,
-    'db_id' => $current_walk_id += 1,
+    'menu_item_parent' => $cal_nav_pseudo_id,
+    'db_id' => $year_nav_pseudo_id,
     'current' => false,
+    'xfn'     => '',
     'target'  => '',
     'classes' => array( 'menu-item', 'menu-item-has-children' ),
-    'url' => 'https://bog.us/me'
+    'url' => 'veranstaltungen/' . $current_year 
   );
 
   /*
@@ -54,20 +57,22 @@ function lfm_add_calendar_items ( $items, $args) {
   );
    */
 
+  $current_pseudo_id = $year_nav_pseudo_id;
   while ( $today_dt->format( 'Y' ) == $current_year ) {
     $items[] = (object) array(
-      'title' => $today_dt->format( 'F' ),
+      'title' => date_i18n( 'F', $today_dt->getTimestamp()),
       'ID' => 'nav_current_month',
-      'menu_item_parent' => $current_walk_id,
+      'menu_item_parent' => $year_nav_pseudo_id,
       'db_id'   => $current_walk_id += 1,
       'current' => false,
+      'xfn'     => '',
       'target'  => '',
-      'url' => 'https://bog.us/me/too'
+      'url' => 'veranstaltungen/' . $current_year . '/' . $today_dt->format( 'm' )
     );
     $today_dt->modify( '+1 month' );
   }
   return $items;
 }
-add_filter( ' wp_nav_menu_objects', 'lfm_add_calendar_items', 10, 2 );
+add_filter( 'wp_nav_menu_objects', 'lfm_add_calendar_items', 10, 2 );
 
 ?>
