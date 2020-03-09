@@ -55,7 +55,7 @@ include( LFM_PLUGIN_DIR . '/restrict-media/restrict-media.php' );
 include( LFM_PLUGIN_DIR . '/shortcodes/shortcodes.php' );
 include( LFM_PLUGIN_DIR . '/editor_ui/editor_ui.php' );
 include( LFM_PLUGIN_DIR . '/pods/referentn_save.php' );
-include( LFM_PLUGIN_DIR . '/pods/bildungsanbieter_save.php' );
+include( LFM_PLUGIN_DIR . '/pods/lernorte_save.php' );
 include( LFM_PLUGIN_DIR . '/admin/profile_page.php' );
 include( LFM_PLUGIN_DIR . '/admin/remove_help.php' );
 include( LFM_PLUGIN_DIR . '/admin/excerpt_labels.php' );
