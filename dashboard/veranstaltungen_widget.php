@@ -1,27 +1,28 @@
 <?php
-$custom_post_type_coop    = 'bildungsanbieter';
+
+$custom_post_type_coop    = 'lernort';
 $custom_post_type_event   = 'veranstaltung';
 $custom_post_type_referee = 'referentn';
 
 $current_user_id  = wp_get_current_user()->ID;
-$bildungsanbieter = pods($custom_post_type_coop);
-$bildungsanbieter->find(array(
+$lernort = pods($custom_post_type_coop);
+$lernort->find(array(
   'limit' => 1,
   'where' => 't.post_author = ' . $current_user_id
 ));
-$bildungsanbieter->fetch();
-?>
+$lernort->fetch();
 
-<?php if( $bildungsanbieter->exists() ) {
-    $query_params = array(
-      'where' => 'bildungsanbieter.ID = ' . $bildungsanbieter->ID()
-    );
-    $veranstaltungen = pods( $custom_post_type_event, $query_params );
-  ?>
+if( $lernort->exists() ) {
+  $query_params = array(
+    'where' => 'lernort.ID = ' . $lernort->ID()
+  );
+  $veranstaltungen = pods( $custom_post_type_event, $query_params );
+
+?>
   <p>
     <?php
       /* TODO: Enhance translatability, also cover "none" case */
-      _e("Dem Bildungsanbieter sind ");
+      _e("Dem Lernort sind ");
       echo $veranstaltungen->total();
       _e(" Veranstaltung(en) zugeordnet."); ?>
   </p>
@@ -35,7 +36,7 @@ $bildungsanbieter->fetch();
 <?php
   } else {
 ?>
-  <h4 align=center><?php _e("Dein Zugang ist noch nicht mit einem Bildungsanbieter verknüpft");?></h4>
+  <h4 align=center><?php _e("Dein Zugang ist noch nicht mit einem Lernort verknüpft");?></h4>
   <br/>
   <div align=center>
     <a class="page-title-action" href="/wp-admin/post-new.php?post_type=<?php echo $custom_post_type_coop; ?>">
@@ -45,4 +46,3 @@ $bildungsanbieter->fetch();
 <?php
   }
 ?>
-
