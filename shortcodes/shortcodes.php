@@ -64,6 +64,8 @@ function lfm_shortcode_event_list_month() {
 
   $calendar_month = get_query_var( 'calendar_month' );
   $calendar_year  = get_query_var( 'calendar_year' );
+  $zielgruppen    = get_query_var( 'zielgruppe' );
+  $formate        = get_query_var( 'format' );
 
   if( !$calendar_month ) {
     $today = strtotime('today');
@@ -80,10 +82,23 @@ function lfm_shortcode_event_list_month() {
   $end_of_month       = new DateTime($beginning_of_month_str);
   $end_of_month->modify( 'last day of' );
 
+  $zielgruppe_query = " AND zielgruppe.ID in (" . implode(', ', $zielgruppen) . ")";
+  $formate_query =    " AND veranstaltungsformate.ID in (" . implode(', ', $formate) . ")";
+
+  $where_query = "CAST(start_datum.meta_value AS DATE) >= '" . $beginning_of_month->format('Y/m/d') . "'" . " AND CAST(start_datum.meta_value AS DATE) <= '" . $end_of_month->format('Y/m/d') . "'";
+
+  if ( !empty($zielgruppen) ) {
+    $where_query .= $zielgruppe_query;
+  }
+
+  if ( !empty($formate) ) {
+    $where_query .= $formate_query;
+  }
+
   $params = array(
     'orderby' => 'start_datum ASC',
     //'limit' => 15,
-    'where' => "CAST(start_datum.meta_value AS DATE) >= '" . $beginning_of_month->format('Y/m/d') . "'" . " AND CAST(start_datum.meta_value AS DATE) <= '" . $end_of_month->format('Y/m/d') . "'"
+    'where' => $where_query
   );
 
   $pods = pods( 'veranstaltung', $params );
