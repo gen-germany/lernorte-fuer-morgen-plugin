@@ -114,12 +114,12 @@ function lfm_shortcode_referentn_list() {
       $pods->id = $pods->id();
       $nachname = $pods->field( 'nachname' );
 
-      if (mb_substr($nachname, 0, 1, "UTF-8") !== $current_first_letter) {
-        $current_first_letter = mb_substr($nachname, 0, 1, "UTF-8");
+      if (mb_substr($nachname, 0, 1, "UTF-8") != $current_first_letter) {
+        $current_first_letter = mb_substr( $nachname, 0, 1, "UTF-8" );
         echo "<h2>" . $current_first_letter . "</h2>";
       }
 
-      $temp = $pods->template( 'Referent*n: Single' );
+      $temp = $pods->template( 'Referent: Mini' );
 
       // Output rendered template if it exists
       if ( isset( $temp ) ) {
