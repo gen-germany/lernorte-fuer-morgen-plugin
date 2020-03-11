@@ -45,7 +45,7 @@ add_shortcode('lfm_veranstaltungen_count',
 function lfm_shortcode_upcoming_months_links() {
   $num_month = 8;
 
-  $i = 0;
+  $i = -1;
   while( $i++ < $num_month ) {
     $month_date = mktime(0, 0, 0, date('n') + $i);
     $month_name = date_i18n( 'F', $month_date, 1 );
