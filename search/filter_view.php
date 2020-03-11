@@ -1,5 +1,42 @@
 <?php
 
+function lfm_check_boxes( $pod_name, $param_name = null) {
+  if ( $param_name == null ) {
+    $param_name = $pod_name;
+  }
+
+  $choice = get_query_var( $param_name );
+
+  $params = array(
+    //'orderby' => '',
+    'limit'   => -1
+  );
+  $pods = pods( $pod_name, $params);
+
+  if ( $pods->total() > 0 ) {
+    while( $pods->fetch() )  {
+      $is_checked = ( in_array ($pods->id(), $choice) ) ? 'checked' : '' ;
+      echo '<input type="checkbox" name="' . $param_name . '[]" value="' . $pods->id() . '" ' . $is_checked . '>';
+      echo '<label>' . $pods->field( 'post_title' ) . '</label>';
+      echo '<br/>';
+    }
+  }
+}
+
+function lfm_shortcode_zielgruppe_filter() {
+  ob_start();
+
+  echo "<form method=\"GET\">";
+
+  lfm_check_boxes( 'zielgruppe' );
+
+  echo '<input type="submit">';
+  echo "</form>";
+
+  return ob_get_clean();
+}
+add_shortcode('lfm_zielgruppe_filter', 'lfm_shortcode_zielgruppe_filter' );
+
 /** */
 function lfm_shortcode_format_filter() {
   ob_start();
@@ -26,7 +63,23 @@ function lfm_shortcode_format_filter() {
 
   return ob_get_clean();
 }
-add_shortcode('lfm_format_filter', 'lfm_shortcode_format_filter' );
+add_shortcode( 'lfm_format_filter', 'lfm_shortcode_format_filter' );
+
+function lfm_shortcode_filter_form() {
+  ob_start();
+
+  echo "<form method=\"GET\">";
+
+  lfm_check_boxes( 'veranstaltungsformat', 'format' );
+  echo '<br/>';
+  lfm_check_boxes( 'zielgruppe' );
+
+  echo '<input type="submit">';
+  echo "</form>";
+
+  return ob_get_clean();
+}
+add_shortcode( 'lfm_filter_form', 'lfm_shortcode_filter_form' );
 
 
 ?>
