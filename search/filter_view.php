@@ -15,6 +15,10 @@ function lfm_check_boxes( $pod_name, $param_name = null) {
 
   $choice = get_query_var( $param_name );
 
+  if ( empty ( $choice ) ) {
+    $choice = array();
+  }
+
   $params = array(
     //'orderby' => '',
     'limit'   => -1
@@ -50,6 +54,10 @@ function lfm_shortcode_format_filter() {
   ob_start();
 
   $formate = get_query_var( 'format' );
+
+  if ( empty ( $formate ) ) {
+    $formate = array();
+  }
 
   echo "<form method=\"GET\">";
   $params = array(
