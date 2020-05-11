@@ -1,4 +1,4 @@
-<?
+<?php
 
 /** Pretty hardcore, overwrite gettext translation function. */
 function lfm_excerpt_label( $translation, $original ) {

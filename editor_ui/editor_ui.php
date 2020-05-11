@@ -22,7 +22,7 @@ add_filter( 'admin_footer', 'lfm_remove_editor_tabs_css', 99);
 function lfm_remove_editor_tabs_css(){
   $user = wp_get_current_user();
   if ( in_array( 'administrator', (array) $user->roles ) ) {
-    # Admins see everything.
+    // Admins see everything.
   }
   else {
     echo '  <style type="text/css">

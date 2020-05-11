@@ -18,6 +18,25 @@ There is not much sense in installing this for a page different then "lernorte f
 The plugin assumes certain [pod](pods.io) (CPT) classes to be installed and configured which is not (yet?) done from within this plugin!
 Eventually, the pods/CPTs could be create by this plugin, but I am not yet sure how and whether this is always a good idea. Happy about comments.
 
+Specifically, following pods are expected to exist
+<table>
+  <tr>
+    <td>pod name</td>
+    <td>props</td>
+    <td>needed templates</td>
+  </tr>
+  <tr>
+    <td>Veranstaltung</td>
+    <td>...</td>
+    <td>...</td>
+  </tr>
+  <tr>
+    <td>Referentn</td>
+    <td>...</td>
+    <td>Referent*n: Single</td>
+  </tr>
+</table>
+
 ## Implemented Features
 
 **Technical**
@@ -92,6 +111,17 @@ define( 'WP_DEBUG_DISPLAY', false );
 - Use `json_encode()` to get a JSON representation of a complicated object.
 - Or use `print_r` to print datastructures
 - Also `var_dump` comes helpful for variables / datastructures sometimes
+
+### Lessons learned / take home messages
+
+#### Dynamic menus
+
+In Wordpress you have a number of ways to dynamically (via php) modify menus:
+  * with `add_filter( 'wp_nav_menu_items', cb, 10, 2)` you can inject HTML.
+  * with `add_filter( 'wp_nav_menu_objects', cb, 10, 2 )` you can inject objects
+    in the menu tree.
+  * with `wp_update_nav_menu_item` you can manipulate the menu structure.
+  * ...
 
 
 ## License
