@@ -16,8 +16,15 @@ function lfm_add_calendar_items ( $items, $args) {
   $cal_nav_pseudo_id  = 9997771;
   $year_nav_pseudo_id = $cal_nav_pseudo_id + 1;
 
+  $timezone = new DateTimeZone( get_option( 'timezone_string' ) );
+
   $today_dt = new DateTime();
-  $today_dt->modify( 'first of month' );
+  $today_dt->setTimezone($timezone);
+
+  // We want: $today_dt->modify( 'first of month' );
+  // But this is not possible :( - so substract the day.
+  $num_days = $today_dt->format('d') - 1;
+  $today_dt->modify( '-'.$num_days.' day' );
 
   $current_year = $today_dt->format( 'Y' );
 	
@@ -30,7 +37,7 @@ function lfm_add_calendar_items ( $items, $args) {
     'target'  => '',
     'xfn'     => '',
     'classes' => array( 'menu-item', 'menu-item-has-children' ),
-    'url' => 'veranstaltungen/' . $current_year
+    'url' => site_url( '/veranstaltungen/' . $current_year )
   );
 
   $items[] = (object) array(
@@ -42,7 +49,7 @@ function lfm_add_calendar_items ( $items, $args) {
     'xfn'     => '',
     'target'  => '',
     'classes' => array( 'menu-item', 'menu-item-has-children' ),
-    'url' => 'veranstaltungen/' . $current_year 
+    'url' => site_url( '/veranstaltungen/' . $current_year )
   );
 
   /*
@@ -63,11 +70,11 @@ function lfm_add_calendar_items ( $items, $args) {
       'title' => date_i18n( 'F', $today_dt->getTimestamp()),
       'ID' => 'nav_current_month',
       'menu_item_parent' => $year_nav_pseudo_id,
-      'db_id'   => $current_walk_id += 1,
+      'db_id'   => $current_pseudo_id += 1,
       'current' => false,
       'xfn'     => '',
       'target'  => '',
-      'url' => 'veranstaltungen/' . $current_year . '/' . $today_dt->format( 'm' )
+      'url'     => site_url( '/veranstaltungen/' . $current_year . '/' . $today_dt->format( 'm' ) )
     );
     $today_dt->modify( '+1 month' );
   }
