@@ -82,16 +82,15 @@ function lfm_shortcode_event_list_month() {
   $end_of_month       = new DateTime($beginning_of_month_str);
   $end_of_month->modify( 'last day of' );
 
-  $zielgruppe_query = " AND zielgruppe.ID in (" . implode(', ', $zielgruppen) . ")";
-  $formate_query =    " AND veranstaltungsformate.ID in (" . implode(', ', $formate) . ")";
-
   $where_query = "CAST(start_datum.meta_value AS DATE) >= '" . $beginning_of_month->format('Y/m/d') . "'" . " AND CAST(start_datum.meta_value AS DATE) <= '" . $end_of_month->format('Y/m/d') . "'";
 
   if ( !empty($zielgruppen) ) {
+    $zielgruppe_query = " AND zielgruppe.ID in (" . implode(', ', $zielgruppen) . ")";
     $where_query .= $zielgruppe_query;
   }
 
   if ( !empty($formate) ) {
+    $formate_query =    " AND veranstaltungsformate.ID in (" . implode(', ', $formate) . ")";
     $where_query .= $formate_query;
   }
 
