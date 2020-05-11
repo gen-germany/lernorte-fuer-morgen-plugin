@@ -1,5 +1,13 @@
 <?php
 
+function lfm_check_box( $pod, $param_name, $checked ){
+  $is_checked = ( $checked ) ? 'checked' : '' ;
+
+  echo '<input type="checkbox" name="' . $param_name . '[]" value="' . $pod->id() . '" ' . $is_checked . '>';
+  echo '<label>' . $pod->field( 'post_title' ) . '</label>';
+  echo '<br/>';
+
+}
 function lfm_check_boxes( $pod_name, $param_name = null) {
   if ( $param_name == null ) {
     $param_name = $pod_name;
