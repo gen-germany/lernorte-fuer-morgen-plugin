@@ -103,7 +103,10 @@ function lfm_shortcode_event_list_month() {
   $pods = pods( 'veranstaltung', $params );
 
   while ( $pods->fetch() ) {
-    echo $pods->display( 'name' );
+    // reset id to use a single template
+    $pods->id = $pods->id();
+    echo $pods->template( 'Veranstaltung: Mini' );
+    //echo $pods->display( 'name' );
   }
 
   return ob_get_clean();
