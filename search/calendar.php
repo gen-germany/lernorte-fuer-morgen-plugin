@@ -18,7 +18,7 @@ add_filter( 'query_vars', 'lfm_register_calendar_query_vars' );
  */
 function lfm_rewrite_calendar() {
   add_rewrite_tag( '%calendar_month%', '([^&]+)' );
-  add_rewrite_tag( '%calendar_year%', '([^&]+)' );
+  add_rewrite_tag( '%calendar_year%',  '([^&]+)' );
 
   add_rewrite_rule( '^veranstaltungen/([^/]*)/([^/]*)/?', 'index.php?page_id=480&calendar_month=$matches[2]&calendar_year=$matches[1]', 'top');
 }
