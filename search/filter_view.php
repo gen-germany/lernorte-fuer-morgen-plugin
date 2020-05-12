@@ -35,6 +35,32 @@ function lfm_check_boxes( $pod_name, $param_name = null) {
   }
 }
 
+/** As Themenfelder are modeled as tree (with 'parent'), descend the tree
+ * instead of a simple list */
+function lfm_themenfeld_filter() {
+  $choice = get_query_var( 'themenfeld' );
+
+  $params = array(
+    //'orderby' => '',
+    'limit'   => -1,
+    'where'   => 't.post_parent = 0'
+  );
+  $pods = pods( 'themenfeld', $params );
+  if ( $pods->total() > 0 ) {
+    while( $pods->fetch() )  {
+      echo $pods->field( 'post_title' );
+      echo '<br/>';
+      $subpods = pods( 'themenfeld', array( 'limit' => -1, "where" => 't.post_parent = ' . $pods->id() ) );
+      while( $subpods->fetch() ) {
+        lfm_check_box( $subpods, 'themenfeld', in_array ( $subpods->id(), $choice ) );
+        echo ' -> ' . $subpods->field( 'post_title' );
+        echo '<br/>';
+        
+      }
+    }
+  }
+}
+
 function lfm_shortcode_zielgruppe_filter() {
   ob_start();
 
@@ -86,12 +112,16 @@ function lfm_shortcode_filter_form() {
 
   echo "<form method=\"GET\">";
 
-  echo '<h3>Themenfelder</h3>';
-  lfm_check_boxes( 'themenfeld' );
-  echo '<h3>Formate</h3>';
+  lfm_themenfeld_filter();
+  /*echo '<h4>Themenfelder</h4>';
+  lfm_check_boxes( 'themenfeld' );*/
+
+  echo '<h4>Formate</h4>';
   lfm_check_boxes( 'veranstaltungsformat', 'format' );
-  echo '<h3>Zielgruppen</h3>';
+  echo '<h4>Zielgruppen</h4>';
   lfm_check_boxes( 'zielgruppe' );
+  echo '<h4>Spezial</h4>';
+  lfm_check_boxes( 'spezial' );
 
   echo '<input type="submit">';
 

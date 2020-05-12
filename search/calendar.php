@@ -6,6 +6,10 @@
 function lfm_register_calendar_query_vars( $vars ) {
   $vars[] = 'calendar_month';
   $vars[] = 'calendar_year';
+  $vars[] = 'zielgruppe';
+  $vars[] = 'format';
+  $vars[] = 'spezial';
+  $vars[] = 'themenfeld';
 
   return $vars;
 }
