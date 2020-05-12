@@ -49,6 +49,7 @@ add_filter( 'pods_shortcode', function( $tags )  {
 include( LFM_PLUGIN_DIR . '/dashboard/dashboard.php' );
 
 include( LFM_PLUGIN_DIR . '/admin/admin_style.php' );
+include( LFM_PLUGIN_DIR . '/frontend/frontend_style.php' );
 
 include( LFM_PLUGIN_DIR . '/restrict-media/restrict-media.php' );
 

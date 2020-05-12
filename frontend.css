@@ -1,0 +1,10 @@
+/* Styles for filters check boxes. */
+.checkbox-wrap {
+  display: block;
+}
+
+.checkbox-wrap > * {
+  display: inline-block !important;
+  max-width: 70%;
+  vertical-align: top;
+}
