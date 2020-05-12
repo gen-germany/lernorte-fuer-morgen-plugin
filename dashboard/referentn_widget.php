@@ -23,7 +23,14 @@ if( $lernort->exists() ) {
       /* TODO: Enhance translatability */
       _e("Dem Lernort sind ");
       echo $referentn->total();
-      _e(" Referent*n zugeordnet."); ?>
+      _e(" Referent*n zugeordnet.");
+      $referentn_idx = 0;
+      while ( $referentn_idx++ < 5 && $referentn->fetch() ) {
+        // reset id to use a single template
+        $referentn->id = $referentn->id();
+        echo $referentn->field( 'post_title' );
+      }
+    ?>
   </p>
   <!--p>
     <?php _e("xyz ohne Bild! -> "); ?>

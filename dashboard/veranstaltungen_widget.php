@@ -14,7 +14,8 @@ $lernort->fetch();
 
 if( $lernort->exists() ) {
   $query_params = array(
-    'where' => 'lernort.ID = ' . $lernort->ID()
+    'where'   => 'lernort.ID = ' . $lernort->ID(),
+    'orderby' => 'start_datum DESC'
   );
   $veranstaltungen = pods( $custom_post_type_event, $query_params );
 
