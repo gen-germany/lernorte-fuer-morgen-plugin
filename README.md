@@ -8,7 +8,7 @@ Other parts are covered by the [Child-Theme](https://github.com/gen-germany/lern
 
 ## Installation
 
-There is not much sense in installing this for a page different then "lernorte für morgen" - if you are inclined to do that its a good idea to get in contact with us first.
+There is not much sense in installing this for a page different then "[lernorte für morgen](https://lernorte.gen-deutschland.de)" - if you are inclined to do that its a very good idea to get in contact with us first.
 
   * Install [github-updater](https://github.com/afragen/github-updater)
   * Use [github-updater](https://github.com/afragen/github-updater) and provide `https://github.com/gen-germany/lernorte-fuer-morgen-plugin` as the URL.
@@ -35,6 +35,11 @@ Specifically, following pods are expected to exist
     <td>...</td>
     <td>Referent*n: Single</td>
   </tr>
+  <tr>
+    <td>Lernort</td>
+    <td>...</td>
+    <td>...</td>
+  </tr>
 </table>
 
 ## Implemented Features
@@ -55,8 +60,8 @@ Specifically, following pods are expected to exist
 **"POD"ish**
 ([pods/](pods/))
 
-  * Modify certain admin forms for own content types via css ::before
-  * Force default setting of `bildungsanbieter` when creating a `veranstaltung` (`function autoselect_bildungsanbieter()`).
+  * Modify certain admin forms for own content types via css `::before`
+  * Force default setting of `lernort` when creating a `veranstaltung` (`function autoselect_bildungsanbieter()`).
 
 **Admin/UI**
 ([admin/](admin/))
@@ -69,11 +74,23 @@ Specifically, following pods are expected to exist
     - Code from https://plugins.trac.wordpress.org/browser/restrict-author-posting/trunk/readme.txt
     - licensed under GPLv2 or later, Copyright Jam Việt 2015 (https://plugins.trac.wordpress.org/browser/restrict-author-posting/trunk/restrict-author-posting.php)
     - GPLv3 is included in this repository
-  * Remove divis default "Project" admin menu item
+  * Remove divis default project thing
+  * add custom search form
   * In (classic) editor for non-admins, hide:
     - pods shortcode generator
     - media buttons
     - visual/text tab
+  * Change excerpt help text ('labels').
+  * Change 'More Fields' label.
+
+**Calender/Filtering**
+  * Add query vars for year and month in order to use them in rewrite and
+    calendar display (to a hardcoded page).
+  * Rewrite "veranstaltungen/2022/10" to include the query vars.
+  * Automatically populate the menu with links to years and months
+    (`[nav/auto_menu.php](nav/auto_menu.php)`).
+    * -> **GOTCHA**: You have to visit the Permalink settings page in WP Admin in order to flush the rewrite cache!
+  * shortcode
 
 **Shortcodes**
 ([shortcodes/shortcodes.php](shortcodes/shortcodes.php))
