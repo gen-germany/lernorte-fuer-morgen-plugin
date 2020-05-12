@@ -102,6 +102,10 @@ function lfm_shortcode_event_list_month() {
 
   $pods = pods( 'veranstaltung', $params );
 
+  if ( $pods->total() <= 0 ) {
+    echo "In diesem Zeitraum mit diesem Filter keine Veranstaltungen";
+  }
+
   while ( $pods->fetch() ) {
     // reset id to use a single template
     $pods->id = $pods->id();
