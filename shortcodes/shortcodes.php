@@ -45,11 +45,20 @@ add_shortcode('lfm_veranstaltungen_count',
 function lfm_shortcode_upcoming_months_links() {
   $num_month = 8;
 
+  $iter_date = new DateTime( strtotime( 'beginning of month') );
+
   $i = -1;
   while( $i++ < $num_month ) {
     $month_date = mktime(0, 0, 0, date('n') + $i);
     $month_name = date_i18n( 'F', $month_date, 1 );
-    echo "<a href=\"/veranstaltungen/2020/" . date( 'm', $month_date ) . "\">" . $month_name . "</a> ";
+
+    echo "<a href=\"/veranstaltungen/".$iter_date->format('Y')."/" . date( 'm', $month_date ) . "\">" . $month_name . "</a> ";
+
+    if ( $i < $num_month ) {
+      echo "| ";
+    }
+
+    $iter_date->modify("+1 month");
   }
   //->modify( 'first day of next month' );
   //$final = date("Y-m-d", strtotime("+1 month", $time));
