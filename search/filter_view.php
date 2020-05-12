@@ -86,11 +86,15 @@ function lfm_shortcode_filter_form() {
 
   echo "<form method=\"GET\">";
 
+  echo '<h3>Themenfelder</h3>';
+  lfm_check_boxes( 'themenfeld' );
+  echo '<h3>Formate</h3>';
   lfm_check_boxes( 'veranstaltungsformat', 'format' );
-  echo '<br/>';
+  echo '<h3>Zielgruppen</h3>';
   lfm_check_boxes( 'zielgruppe' );
 
   echo '<input type="submit">';
+
   echo "</form>";
 
   return ob_get_clean();
