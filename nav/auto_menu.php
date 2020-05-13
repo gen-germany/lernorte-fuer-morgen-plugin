@@ -87,13 +87,12 @@ function lfm_add_calendar_items ( $items, $args) {
     'url' => site_url( '/veranstaltungen/' . $current_year )
   );
 
-  lfm_add_year_month_items ($items, $today_dt, $year_nav_pseudo_id, $cal_nav_pseudo_id);
+  lfm_add_year_month_items( $items, $today_dt, $year_nav_pseudo_id, $cal_nav_pseudo_id );
 
-  /*
   $next_year = new DateTime();
+  $next_year->setDate( $today_dt->format( 'Y' ), 1, 1 );
   $year_nav_pseudo_id+= 13;
-  lfm_add_year_month_items ($items, $next_year, $year_nav_pseudo_id, $cal_nav_pseudo_id);
-  */
+  lfm_add_year_month_items( $items, $next_year, $year_nav_pseudo_id, $cal_nav_pseudo_id );
 
   return $items;
 }

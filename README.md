@@ -82,6 +82,7 @@ Specifically, following pods are expected to exist
     - visual/text tab
   * Change excerpt help text ('labels').
   * Change 'More Fields' label.
+  * Remove Caldera Form Button for non-admins
 
 **Calender/Filtering**
   * Add query vars for year and month in order to use them in rewrite and
