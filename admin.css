@@ -18,7 +18,7 @@
 }
 
 /* Modify title text input display in wordpress admin form for Bildungsanbieter. */
-.post-type-bildungsanbieter #titlediv::before {
+.post-type-lernort #titlediv::before {
   content: "Name des Bildungsanbieters";
   display: block;
 
@@ -32,7 +32,7 @@
 }
 
 /* Modify content text editor display in wordpress admin form for Bildungsanbieter. */
-.post-type-bildungsanbieter #wp-content-wrap::before {
+.post-type-lernort #wp-content-wrap::before {
   content: "Beschreibung des Bildungsanbieters";
   display: block;
 
