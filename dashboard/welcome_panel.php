@@ -1,5 +1,5 @@
 <?php
-$custom_post_type_coop    = 'bildungsanbieter';
+$custom_post_type_coop    = 'lernort';
 $custom_post_type_event   = 'veranstaltung';
 $custom_post_type_referee = 'referentn';
 

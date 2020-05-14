@@ -25,7 +25,14 @@ if( $lernort->exists() ) {
       /* TODO: Enhance translatability, also cover "none" case */
       _e("Dem Lernort sind ");
       echo $veranstaltungen->total();
-      _e(" Veranstaltung(en) zugeordnet."); ?>
+      _e(" Veranstaltung(en) zugeordnet.");
+      $veranstaltung_idx = 0;
+      while ( $veranstaltung_idx++ < 5 && $veranstaltungen->fetch() ) {
+        // reset id to use a single template
+        $veranstaltungen->id = $veranstaltungen->id();
+        echo $veranstaltungen->template( 'Veranstaltung: Mini' );
+      }
+    ?>
   </p>
   <!--p>
     <?php _e("xyz ohne Bild! -> "); ?>

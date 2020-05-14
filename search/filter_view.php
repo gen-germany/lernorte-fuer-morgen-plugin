@@ -3,9 +3,10 @@
 function lfm_check_box( $pod, $param_name, $checked ){
   $is_checked = ( $checked ) ? 'checked' : '' ;
 
+  echo '<div class="checkbox-wrap">';
   echo '<input type="checkbox" name="' . $param_name . '[]" value="' . $pod->id() . '" ' . $is_checked . '>';
   echo '<label>' . $pod->field( 'post_title' ) . '</label>';
-  echo '<br/>';
+  echo '</div>';
 
 }
 function lfm_check_boxes( $pod_name, $param_name = null) {
@@ -23,14 +24,15 @@ function lfm_check_boxes( $pod_name, $param_name = null) {
     //'orderby' => '',
     'limit'   => -1
   );
-  $pods = pods( $pod_name, $params);
+  $pods = pods( $pod_name, $params );
 
   if ( $pods->total() > 0 ) {
     while( $pods->fetch() )  {
       $is_checked = ( in_array ($pods->id(), $choice) ) ? 'checked' : '' ;
-      echo '<input type="checkbox" name="' . $param_name . '[]" value="' . $pods->id() . '" ' . $is_checked . '>';
+      lfm_check_box( $pods, $param_name, $is_checked );
+      /*echo '<input type="checkbox" name="' . $param_name . '[]" value="' . $pods->id() . '" ' . $is_checked . '>';
       echo '<label>' . $pods->field( 'post_title' ) . '</label>';
-      echo '<br/>';
+      echo '<br/>';*/
     }
   }
 }
@@ -40,6 +42,10 @@ function lfm_check_boxes( $pod_name, $param_name = null) {
 function lfm_themenfeld_filter() {
   $choice = get_query_var( 'themenfeld' );
 
+  if ( empty ( $choice ) ) {
+    $choice = array();
+  }
+
   $params = array(
     //'orderby' => '',
     'limit'   => -1,
@@ -48,14 +54,13 @@ function lfm_themenfeld_filter() {
   $pods = pods( 'themenfeld', $params );
   if ( $pods->total() > 0 ) {
     while( $pods->fetch() )  {
-      echo $pods->field( 'post_title' );
+      echo "<strong>".$pods->field( 'post_title' )."</strong>";
       echo '<br/>';
       $subpods = pods( 'themenfeld', array( 'limit' => -1, "where" => 't.post_parent = ' . $pods->id() ) );
       while( $subpods->fetch() ) {
         lfm_check_box( $subpods, 'themenfeld', in_array ( $subpods->id(), $choice ) );
-        echo ' -> ' . $subpods->field( 'post_title' );
-        echo '<br/>';
-        
+        /*echo ' -> ' . $subpods->field( 'post_title' );
+        echo '<br/>';*/
       }
     }
   }
@@ -100,7 +105,7 @@ function lfm_shortcode_format_filter() {
     }
   }
 
-  echo '<input type="submit">';
+  echo '<input class="et_pb_contact_submit et_pb_button" type="submit" value="Filtern">';
   echo "</form>";
 
   return ob_get_clean();
