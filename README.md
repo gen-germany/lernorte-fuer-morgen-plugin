@@ -83,6 +83,8 @@ Specifically, following pods are expected to exist
   * Change excerpt help text ('labels').
   * Change 'More Fields' label.
   * Remove Caldera Form Button for non-admins
+  * Display a warning in tinyMCEs word count field if referentn description is
+    above 60 words long.
 
 **Calender/Filtering**
   * Add query vars for year and month in order to use them in rewrite and
