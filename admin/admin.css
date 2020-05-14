@@ -19,7 +19,7 @@
 
 /* Modify title text input display in wordpress admin form for Bildungsanbieter. */
 .post-type-lernort #titlediv::before {
-  content: "Name des Bildungsanbieters";
+  content: "Name des Lernortes";
   display: block;
 
   color: rgb(35,40,45);
@@ -33,7 +33,7 @@
 
 /* Modify content text editor display in wordpress admin form for Bildungsanbieter. */
 .post-type-lernort #wp-content-wrap::before {
-  content: "Beschreibung des Bildungsanbieters";
+  content: "Beschreibung des Lernortes";
   display: block;
 
   color: rgb(35,40,45);
