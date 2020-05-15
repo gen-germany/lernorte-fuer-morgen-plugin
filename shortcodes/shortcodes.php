@@ -7,8 +7,8 @@ function lfm_shortcode_number_lernorte() {
   $params = array(
     'limit' => -1
   );
-  $bildungsanbieter = pods('lernorte', $params);
-  return $bildungsanbieter->total_found();
+  $lernorte = pods('lernorte', $params);
+  return $lernorte->total_found();
 }
 add_shortcode('lfm_lernorte_count',
   'lfm_shortcode_number_lernorte' );

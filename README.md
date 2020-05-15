@@ -61,7 +61,7 @@ Specifically, following pods are expected to exist
 ([pods/](pods/))
 
   * Modify certain admin forms for own content types via css `::before`
-  * Force default setting of `lernort` when creating a `veranstaltung` (`function autoselect_bildungsanbieter()`).
+  * Force default setting of `lernort` when creating a `veranstaltung` (`function autoselect_lernort()`).
 
 **Admin/UI**
 ([admin/](admin/))
@@ -99,7 +99,7 @@ Specifically, following pods are expected to exist
 ([shortcodes/shortcodes.php](shortcodes/shortcodes.php))
   * [lfm_veranstaltungen_count] returns number of `veranstaltung` entities
   * [lfm_referentn_count] returns number of `referentn` entities
-  * [lfm_bildungsanbieter_count] returns number of `bildungsanbieter` entities
+  * [lfm_lernorte_count] returns number of `lernorte` entities
   * [lfm_month_links] shows links per (upcoming) month
 
 ## Gotchas

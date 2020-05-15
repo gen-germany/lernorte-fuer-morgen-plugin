@@ -4,21 +4,21 @@ $custom_post_type_event   = 'veranstaltung';
 $custom_post_type_referee = 'referentn';
 
 $current_user_id  = wp_get_current_user()->ID;
-$bildungsanbieter = pods($custom_post_type_coop);
+$lernorte = pods($custom_post_type_coop);
 ?>
 
 <div class="getting-started">
   <h1 align=center><?php _e('Willkommen beim Verwaltungsbereich der LernOrte für MorGEN'); ?>
   <p  align=center><?php _e( 'Wir hoffen wir bringen dich hiermit schnell an den Start.' ); ?></p>
   <?php
-    $bildungsanbieter->find(array(
+    $lernorte->find(array(
         'limit' => 1,
         'where' => 't.post_author = ' . $current_user_id
       ));
-    $bildungsanbieter->fetch();
-    if( $bildungsanbieter->exists() ) {
+    $lernorte->fetch();
+    if( $lernorte->exists() ) {
     ?>
-      <h2 align=center><?php _e("Du verwaltest: "); ?><?php echo $bildungsanbieter->display('post_title'); ?></h2>
+      <h2 align=center><?php _e("Du verwaltest: "); ?><?php echo $lernorte->display('post_title'); ?></h2>
    <?php
       } else {
    ?>
