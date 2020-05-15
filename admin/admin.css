@@ -17,7 +17,7 @@
   list-style-position: inside;
 }
 
-/* Modify title text input display in wordpress admin form for Bildungsanbieter. */
+/* Modify title text input display in wordpress admin form for Lernort. */
 .post-type-lernort #titlediv::before {
   content: "Name des Lernortes";
   display: block;
@@ -31,7 +31,7 @@
   margin-bottom: 12px;
 }
 
-/* Modify content text editor display in wordpress admin form for Bildungsanbieter. */
+/* Modify content text editor display in wordpress admin form for Lernort. */
 .post-type-lernort #wp-content-wrap::before {
   content: "Beschreibung des Lernortes";
   display: block;

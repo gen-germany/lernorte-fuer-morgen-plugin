@@ -1,6 +1,6 @@
 <?php
 
-/* Auto-select first Bildungsanbieter when not set and saving a Veranstaltung (pre-save). */
+/* Auto-select first Lernort when not set and saving a Veranstaltung (pre-save). */
 add_filter('pods_api_pre_save_pod_item_veranstaltung', 'lfm_autoselect_lernort', 10, 2);
 
 function lfm_autoselect_lernort($pieces, $is_new_item) {
@@ -19,7 +19,7 @@ function lfm_autoselect_lernort($pieces, $is_new_item) {
     $lernort_data = $lernort->data();
 
     if ($lernort_data == NULL) {
-      return pods_error("Bitte lege zuerst einen Bildungsanbieter an.");
+      return pods_error("Bitte lege zuerst einen Lernort an.");
     }
 
     $first_lernort_id = reset($lernort_data)->ID;
