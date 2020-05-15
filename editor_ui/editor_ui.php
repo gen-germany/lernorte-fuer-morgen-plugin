@@ -52,10 +52,13 @@ function lfm_remove_caldera_form_link() {
 add_filter( 'admin_print_footer_scripts', 'lfm_add_tinymce_word_limits' );
 function lfm_add_tinymce_word_limits() {
   global $post_type;
-  if ('referentn' == $post_type) {
-    $word_limit = 60;
-  }
-  else {
+  if ( 'referentn' == $post_type ) {
+    $word_limit = 200;
+  } elseif ( 'lernort' == $post_type ) {
+    $word_limit = 400;
+  } elseif ( 'veranstaltung' == $post_type ) {
+    $word_limit = 800;
+  } else {
     return;
   }
   ?>
