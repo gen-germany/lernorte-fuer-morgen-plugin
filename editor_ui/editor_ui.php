@@ -64,6 +64,8 @@ function lfm_add_tinymce_word_limits() {
   ?>
   <script type="text/javascript">
   window.onload = function () {
+    if (!tinyMCE) { return; }
+
     var word_limit = <?php echo $word_limit; ?>;
     tinyMCE.editors[0].on('keyup', function(ed,e) {
       var word_count_element = document.querySelectorAll('.word-count')[0];
