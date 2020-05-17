@@ -56,8 +56,10 @@ function lfm_add_tinymce_word_limits() {
     $word_limit = 200;
   } elseif ( 'lernort' == $post_type ) {
     $word_limit = 400;
+    $excerpt_word_limit = 70;
   } elseif ( 'veranstaltung' == $post_type ) {
     $word_limit = 800;
+    $excerpt_word_limit = 50;
   } else {
     return;
   }
@@ -82,6 +84,35 @@ function lfm_add_tinymce_word_limits() {
         //text_to_change.nodeValue = 'Wortanzahl: ';
       }
     });
+
+    var excerpt_element = document.getElementById('excerpt');
+    var excerpt_word_limit = <?php echo $excerpt_word_limit ?>;
+    if (excerpt_element) {
+      var excerpt_box = document.getElementById('postexcerpt');
+      var limit_span  = document.getElementById('postexcerpt-limit');
+      if (!limit_span) {
+        var limit_span = document.createElement('span');
+        limit_span.innerHTML = "Wort-Limit: " + excerpt_word_limit;
+        limit_span.id = "postexcerpt-limit";
+        var excerpt_inside = document.querySelectorAll('#postexcerpt .inside')[0];
+        excerpt_inside.appendChild(limit_span);
+      }
+
+      excerpt_element.onkeyup = function() {
+        // or words: w+ ?
+        var word_count = this.value.trim().split(/\s+/).length;
+        limit_span.innerHTML = "Wort-Limit: " + excerpt_word_limit + " (" + word_count + ")";
+
+
+        if (word_count > excerpt_word_limit) {
+          limit_span.style.backgroundColor = 'red';
+          excerpt_box.style.border = "1px solid red";
+        } else {
+          limit_span.style.backgroundColor = 'white';
+          excerpt_box.style.border = "1px solid #ccd0d4";
+        }
+      };
+    }
   }
   </script>
 
