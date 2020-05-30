@@ -129,6 +129,8 @@ add_shortcode('lfm_event_list_month', 'lfm_shortcode_event_list_month' );
 
 /** Hop over all referentn and output their lastnames first letter. */
 function lfm_shortcode_referentn_list() {
+  ob_start(); // Capture output in buffer, to return it later.
+
   $params = array(
     'orderby' => 'nachname',
     'limit'   => -1
@@ -164,6 +166,9 @@ function lfm_shortcode_referentn_list() {
   else {
     echo 'No content found.';
   }
+
+  $output = ob_get_clean();
+  return $output;
 }
 add_shortcode('lfm_referentn_list', 'lfm_shortcode_referentn_list' );
 
