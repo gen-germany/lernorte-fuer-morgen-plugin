@@ -7,7 +7,7 @@ function lfm_shortcode_number_lernorte() {
   $params = array(
     'limit' => -1
   );
-  $lernorte = pods('lernorte', $params);
+  $lernorte = pods('lernort', $params);
   return $lernorte->total_found();
 }
 add_shortcode('lfm_lernorte_count',
@@ -33,7 +33,7 @@ function lfm_shortcode_number_veranstaltungen() {
   $params = array(
     'limit' => -1
   );
-  $veranstaltungen = pods('veranstaltungen', $params);
+  $veranstaltungen = pods('veranstaltung', $params);
   return $veranstaltungen->total_found();
 }
 add_shortcode('lfm_veranstaltungen_count',
