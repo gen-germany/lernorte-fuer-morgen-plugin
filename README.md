@@ -143,6 +143,13 @@ In Wordpress you have a number of ways to dynamically (via php) modify menus:
   * with `wp_update_nav_menu_item` you can manipulate the menu structure.
   * ...
 
+#### Shortcodes and output buffering
+
+Shortcodes should `return` the output and not `echo` it directly. If this is
+ignored, the output might end up at the wrong place in the rendered result.
+
+To make the code behave, start a output buffer `ob_start();` and `return
+ob_get_clean()` at the end of the function.
 
 ## License
 
