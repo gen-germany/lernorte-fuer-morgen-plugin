@@ -69,6 +69,11 @@ include( LFM_PLUGIN_DIR . '/search/calendar.php' );
 include( LFM_PLUGIN_DIR . '/search/filter_view.php' );
 
 
+function lfm_event_date_format( $date_string ) {
+	$timestamp = strtotime( $date_string );
+	$format = "d.m.Y";
+	return date( $format, $timestamp );
+}
 
 
 ?>
