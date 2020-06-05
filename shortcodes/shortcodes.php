@@ -43,6 +43,7 @@ add_shortcode('lfm_veranstaltungen_count',
  * Shortcode to display links to (upcoming) months
  */
 function lfm_shortcode_upcoming_months_links() {
+  ob_start();
   $num_month = 8;
 
   $iter_date = new DateTime( strtotime( 'beginning of month') );
@@ -62,6 +63,7 @@ function lfm_shortcode_upcoming_months_links() {
   }
   //->modify( 'first day of next month' );
   //$final = date("Y-m-d", strtotime("+1 month", $time));
+  return ob_get_clean();
 }
 add_shortcode('lfm_upcoming_months_links', 'lfm_shortcode_upcoming_months_links' );
 
