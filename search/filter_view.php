@@ -115,18 +115,29 @@ add_shortcode( 'lfm_format_filter', 'lfm_shortcode_format_filter' );
 function lfm_shortcode_filter_form() {
   ob_start();
 
-  echo "<form method=\"GET\">";
+  echo "<form id=\"lfm-calendar-filter-form\" method=\"GET\">";
 
+  echo '<div id="lfm-themenfeld-filter">';
   lfm_themenfeld_filter();
+  echo '</div>';
+
   /*echo '<h4>Themenfelder</h4>';
   lfm_check_boxes( 'themenfeld' );*/
 
+  echo '<div id="lfm-format-filter">';
   echo '<h4>Formate</h4>';
   lfm_check_boxes( 'veranstaltungsformat', 'format' );
+  echo '</div>';
+
+  echo '<div id="lfm-zielgruppen-filter">';
   echo '<h4>Zielgruppen</h4>';
   lfm_check_boxes( 'zielgruppe' );
+  echo '</div>';
+
+  echo '<div id="lfm-spezial-filter">';
   echo '<h4>Spezial</h4>';
   lfm_check_boxes( 'spezial' );
+  echo '</div>';
 
   echo '<input type="submit">';
 
