@@ -53,6 +53,7 @@ function lfm_themenfeld_filter() {
   );
   $pods = pods( 'themenfeld', $params );
   if ( $pods->total() > 0 ) {
+    echo "<div class=\"themenfeld-filter\">";
     while( $pods->fetch() )  {
       echo "<strong>".$pods->field( 'post_title' )."</strong>";
       echo '<br/>';
@@ -63,6 +64,7 @@ function lfm_themenfeld_filter() {
         echo '<br/>';*/
       }
     }
+    echo "</div>";
   }
 }
 
