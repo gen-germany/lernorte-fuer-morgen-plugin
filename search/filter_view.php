@@ -118,30 +118,33 @@ function lfm_shortcode_filter_form() {
   ob_start();
 
   echo "<form id=\"lfm-calendar-filter-form\" method=\"GET\">";
+  echo "<h3>Themenfelder</h3>"
 
   echo '<div id="lfm-themenfeld-filter">';
   lfm_themenfeld_filter();
+  echo '<button style="font-size: 12px;" type="submit" name="et_builder_submit_button" class="et_pb_contact_submit et_pb_button">Filter anwenden</button>';
   echo '</div>';
 
   /*echo '<h4>Themenfelder</h4>';
   lfm_check_boxes( 'themenfeld' );*/
 
   echo '<div id="lfm-format-filter">';
-  echo '<h4>Formate</h4>';
+  echo '<h4>Veranstaltungsformate</h4>';
   lfm_check_boxes( 'veranstaltungsformat', 'format' );
+  echo '<button style="font-size: 12px;" type="submit" name="et_builder_submit_button" class="et_pb_contact_submit et_pb_button">Filter anwenden</button>';
   echo '</div>';
 
   echo '<div id="lfm-zielgruppen-filter">';
   echo '<h4>Zielgruppen</h4>';
   lfm_check_boxes( 'zielgruppe' );
+  echo '<button style="font-size: 12px;" type="submit" name="et_builder_submit_button" class="et_pb_contact_submit et_pb_button">Filter anwenden</button>';
   echo '</div>';
 
   echo '<div id="lfm-spezial-filter">';
   echo '<h4>Spezial</h4>';
   lfm_check_boxes( 'spezial' );
+  echo '<button style="font-size: 12px;" type="submit" name="et_builder_submit_button" class="et_pb_contact_submit et_pb_button">Filter anwenden</button>';
   echo '</div>';
-
-  echo '<input type="submit">';
 
   echo "</form>";
 
