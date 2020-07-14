@@ -118,7 +118,7 @@ function lfm_shortcode_filter_form() {
   ob_start();
 
   echo "<form id=\"lfm-calendar-filter-form\" method=\"GET\">";
-  echo "<h3>Themenfelder</h3>"
+  echo "<h3>Themenfelder</h3>";
 
   echo '<div id="lfm-themenfeld-filter">';
   lfm_themenfeld_filter();
