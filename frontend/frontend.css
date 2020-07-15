@@ -1,3 +1,9 @@
+/**
+ * SPDX-FileCopyrightText: 2020 Felix Wolfsteller
+ *
+ * SPDX-License-Identifier: AGPL-3.0-or-later
+ */
+
 /* Styles for filters check boxes. */
 .checkbox-wrap {
   display: block;
@@ -11,4 +17,15 @@
 
 .themenfeld-link {
   margin-left: 1em;
+}
+
+/* For anchor links (page#anchor), offset it due to the menu on top */
+.anchor-offset {
+  position: relative;
+  display:block;
+  top:-135px;
+}
+
+.visibility-hidden {
+  visibility: hidden;
 }
