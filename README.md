@@ -105,6 +105,7 @@ Specifically, following pods are expected to exist
 **Thumbnail size**
   * defined thumbnail size `tile` for use within the Lernorte tiles that crops
     centered.
+  * defined thumbnail size `miniportrait` for the Referent\*n Collage
 
 ## Gotchas
 

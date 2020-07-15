@@ -6,5 +6,6 @@
  */
 
 add_image_size( 'tile', 510, 288, array( 'center', 'center' ) );
+add_image_size( 'miniportrait', 40, 60, array( 'center', 'center' ) );
 
 ?>
