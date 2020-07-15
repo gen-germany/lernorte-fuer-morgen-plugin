@@ -53,8 +53,8 @@ function lfm_themenfeld_filter() {
   );
   $pods = pods( 'themenfeld', $params );
   if ( $pods->total() > 0 ) {
-    echo "<div class=\"themenfeld-filter\">";
     while( $pods->fetch() )  {
+      echo "<div class=\"themenfeld-filter\">";
       echo "<strong>".$pods->field( 'post_title' )."</strong>";
       echo '<br/>';
       $subpods = pods( 'themenfeld', array( 'limit' => -1, "where" => 't.post_parent = ' . $pods->id() ) );
@@ -63,8 +63,8 @@ function lfm_themenfeld_filter() {
         /*echo ' -> ' . $subpods->field( 'post_title' );
         echo '<br/>';*/
       }
+      echo "</div>";
     }
-    echo "</div>";
   }
 }
 
