@@ -5,6 +5,6 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-add_image_size( 'tile-image-size', 510, 288, array( 'center', 'center' ) );
+add_image_size( 'tile', 510, 288, array( 'center', 'center' ) );
 
 ?>

@@ -102,6 +102,10 @@ Specifically, following pods are expected to exist
   * [lfm_lernorte_count] returns number of `lernorte` entities
   * [lfm_month_links] shows links per (upcoming) month
 
+**Thumbnail size**
+  * defined thumbnail size `tile` for use within the Lernorte tiles that crops
+    centered.
+
 ## Gotchas
 
   * Use of German terms, because form UI for creating POD items is not easily translateable.
