@@ -9,7 +9,7 @@ function lfm_remove_personal_options( $subject ) {
   $subject = preg_replace('#<h2>'.__("Name").'</h2>#s', '', $subject, 1); // Remove the "Name" title
   $subject = preg_replace('#<tr class="user-display-name-wrap(.*?)</tr>#s', '', $subject, 1); // Remove the "Display name publicly as" field
   $subject = preg_replace('#<tr class="user-language-wrap(.*?)</tr>#s', '', $subject, 1); // Remove the "Language" field
-  $subject = preg_replace('#<tr class="user-nickname-wrap(.*?)</tr>#s', '', $subject, 1); // Remove the "Nickname" field
+  $subject = preg_replace('/class="user-nickname-wrap/', 'style="display: none;" class="user-nickname-wrap"', $subject, 1); // Hide the "Nickname" field
   $subject = preg_replace('#<tr class="user-url-wrap(.*?)</tr>#s', '', $subject, 1); // Remove the "Website" field
   $subject = preg_replace('#<h2>'.__("About Yourself").'</h2>#s', '', $subject, 1); // Remove the "About Yourself" title
   $subject = preg_replace('#<tr class="user-description-wrap(.*?)</tr>#s', '', $subject, 1); // Remove the "Biographical Info" field

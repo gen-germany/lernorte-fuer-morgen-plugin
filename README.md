@@ -156,6 +156,15 @@ ignored, the output might end up at the wrong place in the rendered result.
 To make the code behave, start a output buffer `ob_start();` and `return
 ob_get_clean()` at the end of the function.
 
+#### Thumbnails
+
+Thumbnails need to be regenerated when a new thumbnail size is added or an
+existing is modified. Use wp-cli (`example missing`) or this plugin
+https://wordpress.org/plugins/regenerate-thumbnails/.
+
+#### OpenStreetMap
+
+is great. search at: https://nominatim.openstreetmap.org/
 ## License
 
 Except for parts mentioned below released under the AGPL-3.0+ (see file `LICENSE`)
