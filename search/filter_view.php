@@ -107,7 +107,7 @@ function lfm_shortcode_format_filter() {
     }
   }
 
-  echo '<input class="et_pb_contact_submit et_pb_button" type="submit" value="Filtern">';
+  echo '<input class="et_pb_button" type="submit" value="Filtern">';
   echo "</form>";
 
   return ob_get_clean();
@@ -122,7 +122,7 @@ function lfm_shortcode_filter_form() {
 
   echo '<div id="lfm-themenfeld-filter">';
   lfm_themenfeld_filter();
-  echo '<button style="font-size: 12px;" type="submit" name="et_builder_submit_button" class="et_pb_contact_submit et_pb_button">Filter anwenden</button>';
+  echo '<button type="submit" name="et_builder_submit_button" class="et_pb_button">Filter anwenden</button>';
   echo '</div>';
 
   /*echo '<h4>Themenfelder</h4>';
@@ -131,19 +131,19 @@ function lfm_shortcode_filter_form() {
   echo '<div id="lfm-format-filter">';
   echo '<h4>Veranstaltungsformate</h4>';
   lfm_check_boxes( 'veranstaltungsformat', 'format' );
-  echo '<button style="font-size: 12px;" type="submit" name="et_builder_submit_button" class="et_pb_contact_submit et_pb_button">Filter anwenden</button>';
+  echo '<button type="submit" name="et_builder_submit_button" class="et_pb_button">Filter anwenden</button>';
   echo '</div>';
 
   echo '<div id="lfm-zielgruppen-filter">';
   echo '<h4>Zielgruppen</h4>';
   lfm_check_boxes( 'zielgruppe' );
-  echo '<button style="font-size: 12px;" type="submit" name="et_builder_submit_button" class="et_pb_contact_submit et_pb_button">Filter anwenden</button>';
+  echo '<button type="submit" name="et_builder_submit_button" class="et_pb_button">Filter anwenden</button>';
   echo '</div>';
 
   echo '<div id="lfm-spezial-filter">';
   echo '<h4>Spezial</h4>';
   lfm_check_boxes( 'spezial' );
-  echo '<button style="font-size: 12px;" type="submit" name="et_builder_submit_button" class="et_pb_contact_submit et_pb_button">Filter anwenden</button>';
+  echo '<button type="submit" name="et_builder_submit_button" class="et_pb_button">Filter anwenden</button>';
   echo '</div>';
 
   echo "</form>";
