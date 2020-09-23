@@ -45,7 +45,7 @@ if( $lernort->exists() ) {
   } else {
 ?>
   <h4 align=center><?php _e("Dein Zugang ist noch nicht mit einem Lernort verknüpft");?></h4>
-  <br/>
+  <br>
   <div align=center>
     <a class="page-title-action" href="/wp-admin/post-new.php?post_type=<?php echo $custom_post_type_coop; ?>">
       <?php echo _e('Bitte lege einen an'); ?>

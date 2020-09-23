@@ -32,7 +32,7 @@ function lfm_check_boxes( $pod_name, $param_name = null) {
       lfm_check_box( $pods, $param_name, $is_checked );
       /*echo '<input type="checkbox" name="' . $param_name . '[]" value="' . $pods->id() . '" ' . $is_checked . '>';
       echo '<label>' . $pods->field( 'post_title' ) . '</label>';
-      echo '<br/>';*/
+      echo '<br>';*/
     }
   }
 }
@@ -56,12 +56,12 @@ function lfm_themenfeld_filter() {
     while( $pods->fetch() )  {
       echo "<div class=\"themenfeld-filter\">";
       echo "<strong>".$pods->field( 'post_title' )."</strong>";
-      echo '<br/>';
+      echo '<br>';
       $subpods = pods( 'themenfeld', array( 'limit' => -1, "where" => 't.post_parent = ' . $pods->id() ) );
       while( $subpods->fetch() ) {
         lfm_check_box( $subpods, 'themenfeld', in_array ( $subpods->id(), $choice ) );
         /*echo ' -> ' . $subpods->field( 'post_title' );
-        echo '<br/>';*/
+        echo '<br>';*/
       }
       echo "</div>";
     }
@@ -103,7 +103,7 @@ function lfm_shortcode_format_filter() {
       $is_checked = ( in_array ($pods->id(), $formate) ) ? 'checked' : '' ;
       echo '<input type="checkbox" name="format[]" value="' . $pods->id() . '" ' . $is_checked . '>';
       echo '<label>' . $pods->field( 'post_title' ) . '</label>';
-      echo '<br/>';
+      echo '<br>';
     }
   }
 

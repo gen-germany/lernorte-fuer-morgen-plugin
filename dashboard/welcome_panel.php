@@ -23,12 +23,11 @@ $lernorte = pods($custom_post_type_coop);
       } else {
    ?>
     <h3 align=center><?php _e("Dein Zugang ist noch nicht mit einem Bildungsanbieter verknüpft");?></h3>
-    <br/>
+    <br>
     <div align=center>
       <a class="page-title-action" href="/wp-admin/post-new.php?post_type=<?php echo $custom_post_type_coop; ?>"><?php echo _e('Bitte lege einen an'); ?></a>
     </div>
     <?php
       }
     ?>
-  <br/>
 </div>
