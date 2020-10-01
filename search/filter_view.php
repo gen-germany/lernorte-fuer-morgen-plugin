@@ -59,9 +59,9 @@ function lfm_themenfeld_filter() {
       echo "<div class=\"themenfeld-filter\">";
       echo "<strong>".$pods->field( 'post_title' )."</strong>";
       echo '<br>';
-      $subpods = pods( 'themenfelder', array( 'limit' => -1, "where" => 't.post_parent = ' . $pods->id() ) );
+      $subpods = pods( 'themenfeld', array( 'limit' => -1, "where" => 't.post_parent = ' . $pods->id() ) );
       while( $subpods->fetch() ) {
-        lfm_check_box( $subpods, 'themenfeld', in_array ( $subpods->id(), $choice ) );
+        lfm_check_box( $subpods, 'themenfelder', in_array ( $subpods->id(), $choice ) );
         /*echo ' -> ' . $subpods->field( 'post_title' );
         echo '<br>';*/
       }
