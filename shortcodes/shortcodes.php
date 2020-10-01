@@ -96,7 +96,7 @@ function lfm_shortcode_event_list_month() {
   $where_query = "CAST(start_datum.meta_value AS DATE) >= '" . $beginning_of_month->format('Y/m/d') . "'" . " AND CAST(start_datum.meta_value AS DATE) <= '" . $end_of_month->format('Y/m/d') . "'";
 
   if ( !empty($zielgruppen) ) {
-    $zielgruppe_query = " AND zielgruppe.ID in (" . implode(', ', $zielgruppen) . ")";
+    $zielgruppe_query = " AND zielgruppen.ID in (" . implode(', ', $zielgruppen) . ")";
     $where_query .= $zielgruppe_query;
   }
 

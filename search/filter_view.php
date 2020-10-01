@@ -9,7 +9,9 @@ function lfm_check_box( $pod, $param_name, $checked ){
   echo '</div>';
 
 }
-function lfm_check_boxes( $pod_name, $param_name = null) {
+
+/** */
+function lfm_check_boxes( $pod_name, $param_name = null ) {
   if ( $param_name == null ) {
     $param_name = $pod_name;
   }
@@ -136,7 +138,7 @@ function lfm_shortcode_filter_form() {
 
   echo '<div id="lfm-zielgruppen-filter">';
   echo '<h4>Zielgruppen</h4>';
-  lfm_check_boxes( 'zielgruppe' );
+  lfm_check_boxes( 'zielgruppe', 'zielgruppen' );
   echo '<button type="submit" name="et_builder_submit_button" class="et_pb_button">Filter anwenden</button>';
   echo '</div>';
 
