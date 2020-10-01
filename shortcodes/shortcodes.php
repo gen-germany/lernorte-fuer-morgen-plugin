@@ -108,7 +108,7 @@ function lfm_shortcode_event_list_month() {
   }
 
   if ( !empty($themenfelder) ) {
-    $themenfelder_query =    " AND rubriken.ID in (" . implode(', ', $themenfelder) . ")";
+    $themenfelder_query =    " AND themenfelder.ID in (" . implode(', ', $themenfelder) . ")";
     $where_query .= $themenfelder_query;
   }
 
