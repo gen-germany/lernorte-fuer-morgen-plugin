@@ -78,6 +78,7 @@ function lfm_shortcode_event_list_month() {
   $zielgruppen    = get_query_var( 'zielgruppe' );
   $formate        = get_query_var( 'format' );
   $themenfelder   = get_query_var( 'themenfelder' );
+  $spezials       = get_query_var( 'spezials' );
 
   if( !$calendar_month ) {
     $today = strtotime('today');
@@ -109,6 +110,11 @@ function lfm_shortcode_event_list_month() {
   if ( !empty($themenfelder) ) {
     $themenfelder_query =    " AND rubriken.ID in (" . implode(', ', $themenfelder) . ")";
     $where_query .= $themenfelder_query;
+  }
+
+  if ( !empty($spezials) ) {
+    $spezials_query =    " AND spezials.ID in (" . implode(', ', $spezials) . ")";
+    $where_query .= $spezials_query;
   }
 
 

@@ -144,7 +144,7 @@ function lfm_shortcode_filter_form() {
 
   echo '<div id="lfm-spezial-filter">';
   echo '<h4>Spezial</h4>';
-  lfm_check_boxes( 'spezial' );
+  lfm_check_boxes( 'spezial', 'spezials' );
   echo '<button type="submit" name="et_builder_submit_button" class="et_pb_button">Filter anwenden</button>';
   echo '</div>';
 
