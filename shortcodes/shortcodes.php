@@ -77,6 +77,7 @@ function lfm_shortcode_event_list_month() {
   $calendar_year  = get_query_var( 'calendar_year' );
   $zielgruppen    = get_query_var( 'zielgruppe' );
   $formate        = get_query_var( 'format' );
+  $themenfelder   = get_query_var( 'themenfelder' );
 
   if( !$calendar_month ) {
     $today = strtotime('today');
@@ -104,6 +105,12 @@ function lfm_shortcode_event_list_month() {
     $formate_query =    " AND veranstaltungsformate.ID in (" . implode(', ', $formate) . ")";
     $where_query .= $formate_query;
   }
+
+  if ( !empty($themenfelder) ) {
+    $themenfelder_query =    " AND rubriken.ID in (" . implode(', ', $themenfelder) . ")";
+    $where_query .= $themenfelder_query;
+  }
+
 
   $params = array(
     'orderby' => 'start_datum ASC',

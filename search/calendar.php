@@ -9,7 +9,7 @@ function lfm_register_calendar_query_vars( $vars ) {
   $vars[] = 'zielgruppen';
   $vars[] = 'format';
   $vars[] = 'spezial';
-  $vars[] = 'themenfeld';
+  $vars[] = 'themenfelder';
 
   return $vars;
 }

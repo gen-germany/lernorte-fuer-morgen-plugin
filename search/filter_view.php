@@ -42,7 +42,7 @@ function lfm_check_boxes( $pod_name, $param_name = null ) {
 /** As Themenfelder are modeled as tree (with 'parent'), descend the tree
  * instead of a simple list */
 function lfm_themenfeld_filter() {
-  $choice = get_query_var( 'themenfeld' );
+  $choice = get_query_var( 'themenfelder' );
 
   if ( empty ( $choice ) ) {
     $choice = array();
@@ -59,7 +59,7 @@ function lfm_themenfeld_filter() {
       echo "<div class=\"themenfeld-filter\">";
       echo "<strong>".$pods->field( 'post_title' )."</strong>";
       echo '<br>';
-      $subpods = pods( 'themenfeld', array( 'limit' => -1, "where" => 't.post_parent = ' . $pods->id() ) );
+      $subpods = pods( 'themenfelder', array( 'limit' => -1, "where" => 't.post_parent = ' . $pods->id() ) );
       while( $subpods->fetch() ) {
         lfm_check_box( $subpods, 'themenfeld', in_array ( $subpods->id(), $choice ) );
         /*echo ' -> ' . $subpods->field( 'post_title' );
