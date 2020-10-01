@@ -139,6 +139,10 @@ define( 'WP_DEBUG_DISPLAY', false );
 
 ### Lessons learned / take home messages
 
+#### Looking for the Hierarchy?
+
+[wphierarchy](https://wphierarchy.com/) comes in handy sometimes.
+
 #### Dynamic menus
 
 In Wordpress you have a number of ways to dynamically (via php) modify menus:
