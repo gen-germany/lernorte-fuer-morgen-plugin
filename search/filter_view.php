@@ -10,7 +10,7 @@ function lfm_check_box( $pod, $param_name, $checked ){
 
 }
 
-/** */
+/** Creates list of check boxes with given parameter name from pod instances. */
 function lfm_check_boxes( $pod_name, $param_name = null ) {
   if ( $param_name == null ) {
     $param_name = $pod_name;
@@ -29,6 +29,8 @@ function lfm_check_boxes( $pod_name, $param_name = null ) {
   $pods = pods( $pod_name, $params );
 
   if ( $pods->total() > 0 ) {
+    echo '<div class="checkboxes-wrap">';
+
     while( $pods->fetch() )  {
       $is_checked = ( in_array ($pods->id(), $choice) ) ? 'checked' : '' ;
       lfm_check_box( $pods, $param_name, $is_checked );
@@ -36,6 +38,8 @@ function lfm_check_boxes( $pod_name, $param_name = null ) {
       echo '<label>' . $pods->field( 'post_title' ) . '</label>';
       echo '<br>';*/
     }
+
+    echo '</div>';
   }
 }
 
@@ -55,6 +59,7 @@ function lfm_themenfeld_filter() {
   );
   $pods = pods( 'themenfeld', $params );
   if ( $pods->total() > 0 ) {
+    echo '<div class="checkboxes-wrap">';
     while( $pods->fetch() )  {
       echo "<div class=\"themenfeld-filter\">";
       echo "<strong>".$pods->field( 'post_title' )."</strong>";
@@ -67,6 +72,7 @@ function lfm_themenfeld_filter() {
       }
       echo "</div>";
     }
+    echo '</div>';
   }
 }
 
