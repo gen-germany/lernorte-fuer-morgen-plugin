@@ -187,4 +187,31 @@ function lfm_shortcode_referentn_list() {
 }
 add_shortcode('lfm_referentn_list', 'lfm_shortcode_referentn_list' );
 
+/**
+ * Shortcode to display the highlight Veranstaltung.
+ */
+function lfm_shortcode_highlight_veranstaltung($atts=[], $content=null, $tag='') {
+  // normalize attribute keys, lowercase
+  // allthough we otherwise ignore them.
+  $atts = array_change_key_case((array)$atts, CASE_LOWER);
+
+  // Array of ids of veranstaltung (shall be one only)
+  $highlight_veranstaltung = get_option( 'lernorte_hilfe-texte_highlight_veranstaltung' );
+
+  $params = array( 'limit' => -1 );
+
+  $pods = pods( 'veranstaltung', $params );
+
+  // Grab first id in the options array.
+  $pods->fetch( reset( $highlight_veranstaltung ) );
+  $pods->id = $pods->id();
+
+  /* Will have to guard this (and also empty option array above) */
+  $temp = $pods->template( 'Highlight-Veranstaltung' );
+
+  return $temp;
+}
+add_shortcode('lfm_highlight_veranstaltung',
+  'lfm_shortcode_highlight_veranstaltung' );
+
 ?>

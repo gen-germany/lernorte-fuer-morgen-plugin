@@ -101,6 +101,8 @@ Specifically, following pods are expected to exist
   * [lfm_referentn_count] returns number of `referentn` entities
   * [lfm_lernorte_count] returns number of `lernorte` entities
   * [lfm_month_links] shows links per (upcoming) month
+  * [lfm_highlight_veranstaltung] shows the Veranstaltung classified as
+    highlight
 
 **Thumbnail size**
   * defined thumbnail size `tile` for use within the Lernorte tiles that crops
