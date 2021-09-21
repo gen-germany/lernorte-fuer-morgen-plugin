@@ -130,11 +130,19 @@ function lfm_shortcode_event_list_month() {
     echo "In diesem Zeitraum mit diesem Filter keine Veranstaltungen";
   }
 
+  if ( $pods->total() > 0 ) {
+    echo "<ul class=\"nodot divider\">";
+  }
+
   while ( $pods->fetch() ) {
     // reset id to use a single template
     $pods->id = $pods->id();
     echo $pods->template( 'Veranstaltung: Mini' );
     //echo $pods->display( 'name' );
+  }
+
+  if ( $pods->total() > 0 ) {
+    echo "</ul>";
   }
 
   return ob_get_clean();
