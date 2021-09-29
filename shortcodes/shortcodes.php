@@ -120,7 +120,7 @@ function lfm_shortcode_event_list_month() {
 
   $params = array(
     'orderby' => 'start_datum ASC',
-    //'limit' => 15,
+    'limit' => 150,
     'where' => $where_query
   );
 
@@ -143,6 +143,10 @@ function lfm_shortcode_event_list_month() {
 
   if ( $pods->total() > 0 ) {
     echo "</ul>";
+  }
+
+  if ( $pods->total() == 150 ) {
+    echo "<b>Über 150 Veranstaltungen gefunden! Bitte die Auswahl über Filter weiter einschränken</b>";
   }
 
   return ob_get_clean();
